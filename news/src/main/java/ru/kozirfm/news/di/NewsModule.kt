@@ -14,7 +14,7 @@ import ru.kozirfm.news.datasourse.NewsDataSourceRemote
 import ru.kozirfm.news.datasourse.NewsDataSourceRemoteImpl
 import ru.kozirfm.news.repository.NewsRepository
 import ru.kozirfm.news.repository.NewsRepositoryImpl
-import ru.kozirfm.news.ui.screennews.NewsViewModel
+import ru.kozirfm.news.ui.NewsViewModel
 import ru.kozirfm.news.usecase.NewsUseCase
 import ru.kozirfm.news.usecase.NewsUseCaseImpl
 

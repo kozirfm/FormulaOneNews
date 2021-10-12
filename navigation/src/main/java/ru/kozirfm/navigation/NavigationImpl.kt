@@ -30,7 +30,8 @@ class NavigationImpl : Navigation {
             containerId = R.id.main_fragment_container,
             intent = activity.intent,
             navGraphIds = listOf(
-                R.navigation.menu_home_nav_graph
+                R.navigation.menu_news_nav_graph,
+                R.navigation.menu_championship_nav_graph
             )
         )
         fragment.observe(navController) { controller ->

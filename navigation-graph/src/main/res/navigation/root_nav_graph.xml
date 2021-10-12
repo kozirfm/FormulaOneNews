@@ -5,7 +5,8 @@
     android:id="@+id/root_nav_graph"
     app:startDestination="@id/fragment_main">
 
-    <include app:graph="@navigation/menu_home_nav_graph"/>
+    <include app:graph="@navigation/menu_news_nav_graph" />
+    <include app:graph="@navigation/menu_championship_nav_graph" />
 
     <fragment
         android:id="@+id/fragment_main"

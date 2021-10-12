@@ -1,4 +1,4 @@
-package ru.kozirfm.news.ui.screennews
+package ru.kozirfm.news.ui
 
 import android.app.Application
 import androidx.lifecycle.LiveData

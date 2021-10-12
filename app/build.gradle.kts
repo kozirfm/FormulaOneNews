@@ -78,4 +78,6 @@ dependencies {
     implementation(project(Modules.newsApi))
     implementation(project(Modules.network))
     implementation(project(Modules.networkApi))
+    implementation(project(Modules.championship))
+    implementation(project(Modules.championshipApi))
 }

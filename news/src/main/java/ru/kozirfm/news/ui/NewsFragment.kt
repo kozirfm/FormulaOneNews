@@ -1,8 +1,7 @@
-package ru.kozirfm.news.ui.screennews
+package ru.kozirfm.news.ui
 
 import android.os.Bundle
 import android.view.View
-import androidx.compose.ui.platform.ComposeView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.flowWithLifecycle
@@ -10,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.redmadrobot.extensions.lifecycle.observe
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import ru.kozirfm.core.adapterdelegate.AdapterDelegatesManager
 import ru.kozirfm.core.adapterdelegate.CompositeAdapter

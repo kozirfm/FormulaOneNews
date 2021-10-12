@@ -1,11 +1,9 @@
-package ru.kozirfm.news.ui.screennews
+package ru.kozirfm.news.ui
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.recyclerview.widget.RecyclerView
 import ru.kozirfm.core.adapterdelegate.ListItemAdapterDelegate
-import ru.kozirfm.news.R
 import ru.kozirfm.news_api.entities.InNews
 
 class NewsRecyclerViewAdapter : ListItemAdapterDelegate<InNews, NewsViewHolder>() {
