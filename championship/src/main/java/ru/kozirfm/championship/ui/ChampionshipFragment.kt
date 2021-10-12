@@ -3,6 +3,7 @@ package ru.kozirfm.championship.ui
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.tooling.preview.Preview
@@ -16,18 +17,20 @@ class ChampionshipFragment : BaseFragment(R.layout.fragment_championship) {
         super.onViewCreated(view, savedInstanceState)
         (view as ViewGroup).addView(ComposeView(view.context).apply {
             setContent {
-               Championship(drivers = emptyList())
+                Text(text = "Чемпионат")
+                Championship(drivers = emptyList())
             }
         })
     }
 }
 
 @Composable
-fun Championship(drivers: List<InDriver>){
+fun Championship(drivers: List<InDriver>) {
 
 }
+
 @Preview
 @Composable
-fun ChampionshipPreview(){
+fun ChampionshipPreview() {
     Championship(drivers = emptyList())
 }

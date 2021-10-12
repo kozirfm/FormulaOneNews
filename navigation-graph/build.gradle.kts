@@ -27,4 +27,5 @@ dependencies {
     implementation(project(Modules.core))
     implementation(project(Modules.news))
     implementation(project(Modules.championship))
+    implementation(project(Modules.calendar))
 }
