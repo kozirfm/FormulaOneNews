@@ -10,6 +10,8 @@ object Modules {
     val newsApi = module("news-api")
     val news = module("news")
     val utils = module("utils")
+    val championshipApi = module("championship-api")
+    val championship = module("championship")
 
     private fun module(module: String): Map<String, String> {
         return mapOf("path" to ":$module")

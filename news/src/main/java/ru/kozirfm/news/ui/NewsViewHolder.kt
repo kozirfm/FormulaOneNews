@@ -1,9 +1,8 @@
-package ru.kozirfm.news.ui.screennews
+package ru.kozirfm.news.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Card
 import androidx.compose.material.Divider
 import androidx.compose.material.Text

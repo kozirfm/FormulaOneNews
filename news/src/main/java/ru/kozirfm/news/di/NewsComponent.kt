@@ -5,7 +5,7 @@ import ru.kozirfm.core.di.CoreDependencies
 import ru.kozirfm.core.di.annotation.PerFeature
 import ru.kozirfm.navigation_api.di.NavigationDependencies
 import ru.kozirfm.network_api.di.NetworkDependencies
-import ru.kozirfm.news.ui.screennews.NewsFragment
+import ru.kozirfm.news.ui.NewsFragment
 
 @PerFeature
 @Component(

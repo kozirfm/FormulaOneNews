@@ -26,4 +26,5 @@ dependencies {
     //Modules
     implementation(project(Modules.core))
     implementation(project(Modules.news))
+    implementation(project(Modules.championship))
 }
