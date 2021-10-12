@@ -64,5 +64,5 @@ dependencies {
     implementation(project(Modules.utils))
     implementation(project(Modules.networkApi))
     implementation(project(Modules.navigationApi))
-    implementation(project(Modules.championshipApi))
+    implementation(project(Modules.calendarApi))
 }

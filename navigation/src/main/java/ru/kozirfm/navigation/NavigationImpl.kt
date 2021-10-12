@@ -31,7 +31,8 @@ class NavigationImpl : Navigation {
             intent = activity.intent,
             navGraphIds = listOf(
                 R.navigation.menu_news_nav_graph,
-                R.navigation.menu_championship_nav_graph
+                R.navigation.menu_championship_nav_graph,
+                R.navigation.menu_calendar_nav_graph
             )
         )
         fragment.observe(navController) { controller ->
