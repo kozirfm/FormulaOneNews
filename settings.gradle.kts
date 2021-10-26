@@ -12,6 +12,9 @@ pluginManagement {
             if (requested.id.id.startsWith("org.jetbrains.kotlin")){
                 useVersion("1.5.30")
             }
+            if (requested.id.id.startsWith("androidx.navigation")){
+                useModule("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5")
+            }
         }
     }
 }

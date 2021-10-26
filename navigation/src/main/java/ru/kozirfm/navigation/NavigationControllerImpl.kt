@@ -11,12 +11,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.redmadrobot.extensions.lifecycle.observe
-import ru.kozirfm.navigation_api.Navigation
+import ru.kozirfm.navigation_api.NavigationController
 import ru.kozirfm.navigation_api.NavigationEvent
 import ru.kozirfm.navigation_api.setupWithNavController
 import ru.kozirfm.utils.extensions.visible
 
-class NavigationImpl : Navigation {
+class NavigationControllerImpl : NavigationController {
 
     override fun setupBottomNavigationBar(
         fragment: Fragment,

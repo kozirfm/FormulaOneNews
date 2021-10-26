@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/championshipFragment"
         android:name="ru.kozirfm.championship.ui.ChampionshipFragment"
-        android:label="Championship"
+        android:label="@string/championship"
         tools:layout="@layout/fragment_championship" />
 
 </navigation>

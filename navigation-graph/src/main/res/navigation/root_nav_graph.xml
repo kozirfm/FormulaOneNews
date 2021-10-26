@@ -3,15 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_nav_graph"
-    app:startDestination="@id/fragment_main">
+    app:startDestination="@id/fragment_splash">
 
     <include app:graph="@navigation/menu_news_nav_graph" />
     <include app:graph="@navigation/menu_championship_nav_graph" />
+    <include app:graph="@navigation/menu_calendar_nav_graph" />
 
     <fragment
         android:id="@+id/fragment_main"
         android:name="ru.kozirfm.core.main.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main" />
+
+    <fragment
+        android:id="@+id/fragment_splash"
+        android:name="ru.kozirfm.core.base.SplashFragment"
+        android:label="SplashScreenFragment" />
+
+    <action
+        android:id="@+id/toMainFragment"
+        app:destination="@id/fragment_main"
+        app:popUpTo="@id/root_nav_graph"
+        app:popUpToInclusive="true"/>
 
 </navigation>

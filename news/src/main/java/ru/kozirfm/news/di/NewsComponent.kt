@@ -10,7 +10,7 @@ import ru.kozirfm.news.ui.NewsFragment
 @PerFeature
 @Component(
     modules = [NewsModule::class],
-    dependencies = [CoreDependencies::class, NetworkDependencies::class, NavigationDependencies::class]
+    dependencies = [NetworkDependencies::class, NavigationDependencies::class]
 )
 interface NewsComponent: NewsDependencies {
     fun inject(newsFragment: NewsFragment)

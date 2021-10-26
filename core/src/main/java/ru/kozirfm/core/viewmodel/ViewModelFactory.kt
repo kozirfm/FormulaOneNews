@@ -2,11 +2,9 @@ package ru.kozirfm.core.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import ru.kozirfm.core.di.annotation.PerFeature
 import javax.inject.Inject
 import javax.inject.Provider
 
-@PerFeature
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory @Inject constructor(
     private val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>>

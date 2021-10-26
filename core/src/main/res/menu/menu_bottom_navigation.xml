@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_news_nav_graph"
-        android:title="Домой"
+        android:title="@string/news"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_championship_nav_graph"
-        android:title="Чемпионат"
+        android:title="@string/championship"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/menu_calendar_nav_graph"
-        android:title="Calendar"
+        android:title="@string/calendar"
         app:showAsAction="ifRoom" />
 </menu>

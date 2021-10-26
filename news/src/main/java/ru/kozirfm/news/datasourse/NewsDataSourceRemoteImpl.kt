@@ -15,7 +15,7 @@ class NewsDataSourceRemoteImpl @Inject constructor(
 
     override suspend fun getNews(): ResponseState {
         return responseHandler.handleResponse<List<OutNews>, List<InNews>>(
-            api.getArticlesAsync(10)
+            api.getArticlesAsync(50)
         ) { news -> news.map { ToInNewsMapper.map(it) } }
     }
 }

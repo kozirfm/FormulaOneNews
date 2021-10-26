@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-interface Navigation {
+interface NavigationController {
 
     fun handleNavigationEvent(
         activity: Activity,

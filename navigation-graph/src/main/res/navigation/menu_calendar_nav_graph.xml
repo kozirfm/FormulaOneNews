@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/calendarFragment"
         android:name="ru.kozirfm.calendar.ui.CalendarFragment"
-        android:label="Calendar"
+        android:label="@string/calendar"
         tools:layout="@layout/fragment_calendar" />
 
 </navigation>
