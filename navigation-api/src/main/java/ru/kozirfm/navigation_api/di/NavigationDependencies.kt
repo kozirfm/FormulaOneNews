@@ -1,7 +1,9 @@
 package ru.kozirfm.navigation_api.di
 
-import ru.kozirfm.navigation_api.Navigation
+import ru.kozirfm.navigation_api.NavigationController
+import ru.kozirfm.navigation_api.RootDirections
 
 interface NavigationDependencies {
-    fun getNavigation(): Navigation
+    fun getNavigation(): NavigationController
+    fun getRootDirections(): RootDirections
 }

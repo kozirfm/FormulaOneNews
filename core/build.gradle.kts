@@ -5,7 +5,18 @@ plugins {
 }
 
 android {
+
     compileSdk = Config.compileSdk
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Config.composeVersion
+        kotlinCompilerVersion = Config.kotlinVersion
+    }
+
 }
 
 repositories {
@@ -27,6 +38,11 @@ dependencies {
     implementation(Dependencies.Navigation.ui)
     implementation(Dependencies.Navigation.fragment)
     implementation(Dependencies.RedMadRobot.extensions)
+
+    //Compose
+    implementation(Dependencies.Compose.ui)
+    implementation(Dependencies.Compose.foundation)
+    implementation(Dependencies.Compose.material)
 
     //Modules
     implementation(project(Modules.designSystem))

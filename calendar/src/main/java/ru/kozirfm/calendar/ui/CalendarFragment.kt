@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.compose.material.Text
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.stringResource
 import ru.kozirfm.calendar.R
 import ru.kozirfm.core.base.BaseFragment
 
@@ -14,7 +15,7 @@ class CalendarFragment : BaseFragment(R.layout.fragment_calendar) {
         super.onViewCreated(view, savedInstanceState)
         (view as ViewGroup).addView(ComposeView(view.context).apply {
             setContent {
-                Text(text = "Календарь")
+                Text(text = stringResource(id = R.string.calendar))
             }
         })
     }

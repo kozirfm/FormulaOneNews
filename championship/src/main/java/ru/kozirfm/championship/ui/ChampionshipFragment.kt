@@ -2,25 +2,23 @@ package ru.kozirfm.championship.ui
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import ru.kozirfm.championship.R
 import ru.kozirfm.championship_api.entity.InDriver
 import ru.kozirfm.core.base.BaseFragment
 
-class ChampionshipFragment : BaseFragment(R.layout.fragment_championship) {
+class ChampionshipFragment : BaseFragment(useComposeView = true){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (view as ViewGroup).addView(ComposeView(view.context).apply {
-            setContent {
-                Text(text = "Чемпионат")
-                Championship(drivers = emptyList())
-            }
-        })
+        (view as ComposeView).setContent {
+            Text(text = stringResource(id = R.string.championship))
+            Championship(drivers = emptyList())
+        }
     }
 }
 

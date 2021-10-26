@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/newsFragment"
         android:name="ru.kozirfm.news.ui.NewsFragment"
-        android:label="News"
+        android:label="@string/news"
         tools:layout="@layout/fragment_news" />
 
 </navigation>

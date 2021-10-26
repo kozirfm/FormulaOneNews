@@ -23,4 +23,7 @@ dependencies {
     //Serialization
     implementation(Dependencies.Serialization.core)
 
+    //Modules
+    implementation(project(Modules.utils))
+
 }

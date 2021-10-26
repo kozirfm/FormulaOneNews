@@ -6,14 +6,15 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.kozirfm.core.adapterdelegate.ListItemAdapterDelegate
 import ru.kozirfm.news_api.entities.InNews
 
-class NewsRecyclerViewAdapter : ListItemAdapterDelegate<InNews, NewsViewHolder>() {
+class NewsRecyclerViewAdapter(val onItemClick: (inNews: InNews) -> Unit) :
+    ListItemAdapterDelegate<InNews, NewsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return NewsViewHolder(
             ComposeView(parent.context)
-//            LayoutInflater.from(parent.context)
-//                .inflate(R.layout.item_news, parent, false)
-        )
+        ){
+            onItemClick(it)
+        }
     }
 
     override fun onBindViewHolder(item: InNews, viewHolder: NewsViewHolder) {
