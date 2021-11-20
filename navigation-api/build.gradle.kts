@@ -21,4 +21,7 @@ dependencies {
     implementation(Dependencies.Navigation.ui)
     implementation(Dependencies.Navigation.fragment)
     implementation(Dependencies.RedMadRobot.extensions)
+
+    //Modules
+    implementation(project(Modules.utils))
 }

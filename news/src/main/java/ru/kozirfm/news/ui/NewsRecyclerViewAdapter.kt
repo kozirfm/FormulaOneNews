@@ -4,7 +4,7 @@ import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
 import androidx.recyclerview.widget.RecyclerView
 import ru.kozirfm.core.adapterdelegate.ListItemAdapterDelegate
-import ru.kozirfm.news_api.entities.InNews
+import ru.kozirfm.news.entity.InNews
 
 class NewsRecyclerViewAdapter(val onItemClick: (inNews: InNews) -> Unit) :
     ListItemAdapterDelegate<InNews, NewsViewHolder>() {

@@ -8,7 +8,8 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import ru.kozirfm.championship.R
-import ru.kozirfm.championship_api.entity.InDriver
+import ru.kozirfm.championship.entity.InDriver
+
 import ru.kozirfm.core.base.BaseFragment
 
 class ChampionshipFragment : BaseFragment(useComposeView = true){

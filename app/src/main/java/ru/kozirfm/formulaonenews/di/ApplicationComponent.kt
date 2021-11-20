@@ -4,7 +4,9 @@ import android.app.Application
 import dagger.BindsInstance
 import dagger.Component
 import ru.kozirfm.core.di.CoreDependencies
+import ru.kozirfm.core.di.annotation.AppScope
 
+@AppScope
 @Component(modules = [ApplicationModule::class])
 interface ApplicationComponent: CoreDependencies {
 

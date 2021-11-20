@@ -41,21 +41,11 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = Config.composeVersion
-        kotlinCompilerVersion = Config.kotlinVersion
-    }
 }
 
 dependencies {
     implementation(Dependencies.Common.core)
     implementation(Dependencies.Common.appcompat)
-    implementation(Dependencies.Common.activity)
-    implementation(Dependencies.Common.activityCompose)
     implementation(Dependencies.Common.material)
     implementation(Dependencies.Common.constraint)
 
@@ -72,12 +62,13 @@ dependencies {
     implementation(project(Modules.utils))
     implementation(project(Modules.designSystem))
     implementation(project(Modules.navigation))
-    implementation(project(Modules.navigationGraph))
     implementation(project(Modules.navigationApi))
-    implementation(project(Modules.news))
-    implementation(project(Modules.newsApi))
     implementation(project(Modules.network))
     implementation(project(Modules.networkApi))
-    implementation(project(Modules.championship))
-    implementation(project(Modules.championshipApi))
+    implementation(project(Modules.imageLoader))
+    //Features
+    implementation(project(Features.login))
+    implementation(project(Features.news))
+    implementation(project(Features.calendar))
+    implementation(project(Features.championship))
 }

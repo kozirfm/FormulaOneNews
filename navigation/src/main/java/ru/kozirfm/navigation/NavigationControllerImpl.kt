@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.redmadrobot.extensions.lifecycle.observe
 import ru.kozirfm.navigation_api.NavigationController
+import ru.kozirfm.navigation_api.NavigationDirection
 import ru.kozirfm.navigation_api.NavigationEvent
 import ru.kozirfm.navigation_api.setupWithNavController
 import ru.kozirfm.utils.extensions.visible
@@ -19,11 +20,11 @@ import ru.kozirfm.utils.extensions.visible
 class NavigationControllerImpl : NavigationController {
 
     override fun setupBottomNavigationBar(
-        fragment: Fragment,
-        bottomNavigationView: BottomNavigationView,
-        childFragmentManager: FragmentManager,
         activity: Activity,
-        toolbar: Toolbar
+        fragment: Fragment,
+        toolbar: Toolbar,
+        childFragmentManager: FragmentManager,
+        bottomNavigationView: BottomNavigationView
     ) {
         val navController = bottomNavigationView.setupWithNavController(
             fragmentManager = childFragmentManager,
@@ -56,16 +57,16 @@ class NavigationControllerImpl : NavigationController {
                 getNavController(
                     event.rootGraph,
                     R.id.main_activity_container,
-                    fragment,
-                    activity
+                    activity,
+                    fragment
                 ).navigate(event.direction)
             }
             is NavigationEvent.ToRes -> {
                 getNavController(
                     event.rootGraph,
                     R.id.main_activity_container,
-                    fragment,
-                    activity
+                    activity,
+                    fragment
                 ).navigate(
                     event.resId,
                     event.args
@@ -83,8 +84,8 @@ class NavigationControllerImpl : NavigationController {
     private fun getNavController(
         rootGraph: Boolean = false,
         @IdRes layoutRes: Int,
-        fragment: Fragment,
-        activity: Activity
+        activity: Activity,
+        fragment: Fragment
     ): NavController {
         return if (rootGraph) {
             activity.findNavController(layoutRes)

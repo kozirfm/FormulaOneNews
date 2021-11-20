@@ -15,11 +15,11 @@ interface NavigationController {
     )
 
     fun setupBottomNavigationBar(
-        fragment: Fragment,
-        bottomNavigationView: BottomNavigationView,
-        childFragmentManager: FragmentManager,
         activity: Activity,
-        toolbar: Toolbar
+        fragment: Fragment,
+        toolbar: Toolbar,
+        childFragmentManager: FragmentManager,
+        bottomNavigationView: BottomNavigationView
     )
 
 }

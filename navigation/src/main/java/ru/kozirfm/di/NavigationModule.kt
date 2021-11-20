@@ -4,9 +4,9 @@ import dagger.Module
 import dagger.Provides
 import ru.kozirfm.core.di.annotation.AppScope
 import ru.kozirfm.navigation.NavigationControllerImpl
-import ru.kozirfm.navigation.RootDirectionsImpl
+import ru.kozirfm.navigation.NavigateRootDirectionImpl
 import ru.kozirfm.navigation_api.NavigationController
-import ru.kozirfm.navigation_api.RootDirections
+import ru.kozirfm.navigation_api.NavigateRootDirection
 
 @Module
 class NavigationModule {
@@ -19,8 +19,8 @@ class NavigationModule {
 
     @AppScope
     @Provides
-    fun provideRootDirections(): RootDirections {
-        return RootDirectionsImpl()
+    fun provideRootDirections(): NavigateRootDirection {
+        return NavigateRootDirectionImpl()
     }
 
 }

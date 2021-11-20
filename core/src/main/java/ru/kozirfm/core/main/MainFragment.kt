@@ -17,24 +17,22 @@ class MainFragment : BaseFragment(R.layout.fragment_main) {
         toolbar = view.findViewById(R.id.toolbar)
         bottomNavigationView = view.findViewById(R.id.bottom_navigation)
         if (savedInstanceState == null) {
-            navigationController.setupBottomNavigationBar(
-                this,
-                bottomNavigationView,
-                childFragmentManager,
-                requireActivity(),
-                toolbar
-            )
+            initNavigationBar()
         }
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
+        initNavigationBar()
+    }
+
+    private fun initNavigationBar() {
         navigationController.setupBottomNavigationBar(
-            this,
-            bottomNavigationView,
-            childFragmentManager,
-            requireActivity(),
-            toolbar
+            activity = requireActivity(),
+            fragment = this,
+            toolbar = toolbar,
+            bottomNavigationView = bottomNavigationView,
+            childFragmentManager = childFragmentManager
         )
     }
 

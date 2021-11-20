@@ -17,7 +17,7 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.recyclerview.widget.RecyclerView
-import ru.kozirfm.news_api.entities.InNews
+import ru.kozirfm.news.entity.InNews
 
 class NewsViewHolder(
     private val composeView: ComposeView,

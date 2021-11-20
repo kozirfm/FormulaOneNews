@@ -7,25 +7,23 @@
         <option name="testRunner" value="GRADLE" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleJvm" value="JDK" />
+        <option name="gradleJvm" value="11" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/calendar" />
-            <option value="$PROJECT_DIR$/calendar-api" />
             <option value="$PROJECT_DIR$/championship" />
-            <option value="$PROJECT_DIR$/championship-api" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/design-system" />
+            <option value="$PROJECT_DIR$/image-loader" />
+            <option value="$PROJECT_DIR$/login" />
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/navigation-api" />
-            <option value="$PROJECT_DIR$/navigation-graph" />
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/network-api" />
             <option value="$PROJECT_DIR$/news" />
-            <option value="$PROJECT_DIR$/news-api" />
             <option value="$PROJECT_DIR$/utils" />
           </set>
         </option>

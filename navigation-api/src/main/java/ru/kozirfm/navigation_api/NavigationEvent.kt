@@ -18,10 +18,13 @@ sealed class NavigationEvent : Event {
         val rootGraph: Boolean = false
     ) : NavigationEvent()
 
-    class Up : NavigationEvent()
+    data class BackTo(
+        val destinationId: Int,
+        val inclusive: Boolean
+    ) : NavigationEvent()
 
-    class Back : NavigationEvent()
+    object Up : NavigationEvent()
 
-    data class BackTo(val destinationId: Int, val inclusive: Boolean) : NavigationEvent()
+    object Back : NavigationEvent()
 
 }

@@ -2,6 +2,8 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
+    kotlin("plugin.serialization")
+    kotlin("plugin.parcelize")
 }
 
 android {
@@ -31,8 +33,6 @@ dependencies {
     implementation(Dependencies.Common.appcompat)
     implementation(Dependencies.Common.material)
     implementation(Dependencies.Common.fragment)
-    implementation(Dependencies.Common.activity)
-    implementation(Dependencies.Common.activityCompose)
 
     //Dagger 2
     implementation(Dependencies.Dagger.core)
@@ -48,8 +48,8 @@ dependencies {
     //Navigation
     implementation(Dependencies.RedMadRobot.extensions)
 
-    //Coil
-    implementation(Dependencies.Coil.core)
+    //Serialization
+    implementation(Dependencies.Serialization.core)
 
     //Compose
     implementation(Dependencies.Compose.ui)
@@ -62,7 +62,7 @@ dependencies {
     //Modules
     implementation(project(Modules.core))
     implementation(project(Modules.utils))
-    implementation(project(Modules.newsApi))
     implementation(project(Modules.networkApi))
     implementation(project(Modules.navigationApi))
+    implementation(project(Modules.imageLoader))
 }

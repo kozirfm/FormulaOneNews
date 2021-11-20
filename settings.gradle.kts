@@ -18,6 +18,14 @@ pluginManagement {
         }
     }
 }
+
+buildCache {
+    local {
+        isEnabled = true
+        removeUnusedEntriesAfterDays = 3
+    }
+}
+
 rootProject.name = "Formula One News"
 include(":app")
 include(":news")
@@ -25,12 +33,10 @@ include(":network")
 include(":utils")
 include(":navigation")
 include(":core")
-include(":news-api")
 include(":design-system")
 include(":navigation-api")
-include(":navigation-graph")
 include(":network-api")
-include(":championship-api")
 include(":championship")
 include(":calendar")
-include(":calendar-api")
+include(":login")
+include(":image-loader")

@@ -45,10 +45,8 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
                     view.findViewById<RecyclerView>(R.id.recyclerView).apply {
                         adapter = CompositeAdapter(
                             AdapterDelegatesManager(
-                                NewsRecyclerViewAdapter() {
-                                    composeView.setContent {
-                                        Content(text = it.text)
-                                    }
+                                NewsRecyclerViewAdapter {
+                                    composeView.setContent { Content(text = it.text) }
                                 }
                             ), it
                         )

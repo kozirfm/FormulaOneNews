@@ -1,17 +1,14 @@
 package ru.kozirfm.core.base
 
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
-import ru.kozirfm.navigation_api.RootDirections
+import ru.kozirfm.navigation_api.NavigateRootDirection
 import javax.inject.Inject
 
-class SplashViewModel @Inject constructor(private val rootDirections: RootDirections) :
-    BaseViewModel() {
+class SplashViewModel
+@Inject
+constructor(private val navigateRootDirection: NavigateRootDirection) : BaseViewModel() {
 
     init {
-        viewModelScope.launch {
-            navigateTo(rootDirections.toMainFragment())
-        }
+        navigateTo(navigateRootDirection.toMainFragment())
     }
 
 }

@@ -9,8 +9,8 @@ interface EventsDispatcher {
 
     val events: EventQueue
 
-    fun navigateTo(direction: NavDirections, rootGraph: Boolean = false) {
-        events.offerEvent(NavigationEvent.ToDirection(direction, rootGraph))
+    fun navigateTo(direction: NavigationDirection, rootGraph: Boolean = false) {
+        events.offerEvent(NavigationEvent.ToDirection(direction as NavDirections, rootGraph))
     }
 
     fun navigateTo(@IdRes resId: Int, args: Bundle? = null, rootGraph: Boolean = false) {
@@ -18,16 +18,15 @@ interface EventsDispatcher {
     }
 
     fun navigateUp() {
-        events.offerEvent(NavigationEvent.Up())
+        events.offerEvent(NavigationEvent.Up)
     }
 
     fun navigateBack() {
-        events.offerEvent(NavigationEvent.Back())
+        events.offerEvent(NavigationEvent.Back)
     }
 
     fun navigateBackTo(destinationId: Int, inclusive: Boolean) {
         events.offerEvent(NavigationEvent.BackTo(destinationId, inclusive))
-
     }
 
 }

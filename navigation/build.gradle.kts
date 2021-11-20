@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -30,8 +31,12 @@ dependencies {
 
     //Modules
     implementation(project(Modules.core))
-    implementation(project(Modules.newsApi))
     implementation(project(Modules.navigationApi))
-    implementation(project(Modules.navigationGraph))
     implementation(project(Modules.utils))
+
+    //Features
+    implementation(project(Features.login))
+    implementation(project(Features.news))
+    implementation(project(Features.calendar))
+    implementation(project(Features.championship))
 }

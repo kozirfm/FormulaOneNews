@@ -36,6 +36,10 @@ dependencies {
 
     //Modules
     implementation(project(Modules.core))
-    implementation(project(Modules.newsApi))
     implementation(project(Modules.networkApi))
+    //Features
+    implementation(project(Features.login))
+    implementation(project(Features.news))
+    implementation(project(Features.calendar))
+    implementation(project(Features.championship))
 }

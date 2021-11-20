@@ -1,7 +1,6 @@
 package ru.kozirfm.formulaonenews.activity
 
 import android.os.Bundle
-import androidx.compose.ui.platform.ComposeView
 import androidx.navigation.findNavController
 import ru.kozirfm.core.base.BaseActivity
 import ru.kozirfm.formulaonenews.R

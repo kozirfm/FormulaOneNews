@@ -31,8 +31,6 @@ dependencies {
     implementation(Dependencies.Common.appcompat)
     implementation(Dependencies.Common.material)
     implementation(Dependencies.Common.fragment)
-    implementation(Dependencies.Common.activity)
-    implementation(Dependencies.Common.activityCompose)
 
     //Dagger 2
     implementation(Dependencies.Dagger.core)
@@ -64,5 +62,4 @@ dependencies {
     implementation(project(Modules.utils))
     implementation(project(Modules.networkApi))
     implementation(project(Modules.navigationApi))
-    implementation(project(Modules.championshipApi))
 }

@@ -7,10 +7,10 @@ import dagger.multibindings.IntoMap
 import ru.kozirfm.core.di.ViewModelModule
 import ru.kozirfm.core.di.annotation.PerFeature
 import ru.kozirfm.core.viewmodel.ViewModelKey
-import ru.kozirfm.news.datasourse.NewsDataSourceLocal
-import ru.kozirfm.news.datasourse.NewsDataSourceLocalImpl
-import ru.kozirfm.news.datasourse.NewsDataSourceRemote
-import ru.kozirfm.news.datasourse.NewsDataSourceRemoteImpl
+import ru.kozirfm.news.datasourse.NewsLocalDataSource
+import ru.kozirfm.news.datasourse.NewsLocalDataSourceImpl
+import ru.kozirfm.news.datasourse.NewsRemoteDataSource
+import ru.kozirfm.news.datasourse.NewsRemoteDataSourceImpl
 import ru.kozirfm.news.repository.NewsRepository
 import ru.kozirfm.news.repository.NewsRepositoryImpl
 import ru.kozirfm.news.ui.NewsViewModel
@@ -22,24 +22,24 @@ interface NewsModule {
 
     @Binds
     @PerFeature
-    fun bindNewsDataSourceRemote(newsDataSourceRemoteImpl: NewsDataSourceRemoteImpl): NewsDataSourceRemote
+    fun bindNewsDataSourceRemote(remoteDataSource: NewsRemoteDataSourceImpl): NewsRemoteDataSource
 
     @Binds
     @PerFeature
-    fun bindNewsDataSourceLocal(newsDataSourceLocalImpl: NewsDataSourceLocalImpl): NewsDataSourceLocal
+    fun bindNewsDataSourceLocal(localDataSource: NewsLocalDataSourceImpl): NewsLocalDataSource
 
     @Binds
     @PerFeature
-    fun bindNewsRepository(newsRepositoryImpl: NewsRepositoryImpl): NewsRepository
+    fun bindNewsRepository(repository: NewsRepositoryImpl): NewsRepository
 
     @Binds
     @PerFeature
-    fun bindNewsUseCase(newsUseCaseImpl: NewsUseCaseImpl): NewsUseCase
+    fun bindNewsUseCase(useCase: NewsUseCaseImpl): NewsUseCase
 
     @Binds
     @IntoMap
     @ViewModelKey(NewsViewModel::class)
-    fun bindNewsViewModel(newsViewModel: NewsViewModel): ViewModel
+    fun bindNewsViewModel(viewModel: NewsViewModel): ViewModel
 
 }
 

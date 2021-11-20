@@ -1,10 +1,10 @@
 package ru.kozirfm.network_api.services
 
 import kotlinx.coroutines.Deferred
-import retrofit2.Response
+import ru.kozirfm.network_api.entity.ServerResponse
 
 interface NewsRemoteService {
 
-    fun getArticlesAsync(count: Int): Deferred<Response<*>>
+    fun getArticlesAsync(count: Int): Deferred<ServerResponse<*>>
 
 }

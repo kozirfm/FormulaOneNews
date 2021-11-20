@@ -1,7 +1,7 @@
 package ru.kozirfm.news.mapper
 
-import ru.kozirfm.news_api.entities.InNews
-import ru.kozirfm.news_api.entities.OutNews
+import ru.kozirfm.news.entity.InNews
+import ru.kozirfm.news.entity.OutNews
 import ru.kozirfm.utils.mapper.BaseMapper
 
 object ToInNewsMapper : BaseMapper<OutNews, InNews> {
