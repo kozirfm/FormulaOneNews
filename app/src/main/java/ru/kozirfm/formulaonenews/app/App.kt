@@ -1,6 +1,7 @@
 package ru.kozirfm.formulaonenews.app
 
 import android.app.Application
+import com.google.firebase.messaging.FirebaseMessaging
 import ru.kozirfm.core.di.CoreDependenciesProvider
 import ru.kozirfm.di.NavigationFeature
 import ru.kozirfm.image_loader.di.ImageLoaderFeature
@@ -16,6 +17,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
+//        FirebaseMessaging.getInstance().subscribeToTopic("all")
         CoreDependenciesProvider.set(navigationComponent)
         LoginDependenciesProvider.set(networkComponent, navigationComponent)
         NewsDependenciesProvider.set(networkComponent, navigationComponent)

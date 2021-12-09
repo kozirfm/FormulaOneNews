@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
     kotlin("android")
     kotlin("kapt")
 }
@@ -57,6 +58,10 @@ dependencies {
     implementation(Dependencies.Navigation.ui)
     implementation(Dependencies.Navigation.fragment)
 
+    //Firebase
+    implementation(platform(Dependencies.Firebase.bom))
+    implementation(Dependencies.Firebase.messaging)
+
     //Modules
     implementation(project(Modules.core))
     implementation(project(Modules.utils))
@@ -66,6 +71,9 @@ dependencies {
     implementation(project(Modules.network))
     implementation(project(Modules.networkApi))
     implementation(project(Modules.imageLoader))
+    implementation(project(Modules.firebase))
+    implementation(project(Modules.firebaseApi))
+
     //Features
     implementation(project(Features.login))
     implementation(project(Features.news))

@@ -72,4 +72,10 @@ object Dependencies {
         const val iconsCore = "androidx.compose.material:material-icons-core:$version"
         const val iconsExtended = "androidx.compose.material:material-icons-extended:$version"
     }
+
+    object Firebase {
+        private const val version = "29.0.1"
+        const val bom = "com.google.firebase:firebase-bom:$version"
+        const val messaging = "com.google.firebase:firebase-messaging-ktx"
+    }
 }

@@ -17,6 +17,8 @@
             <option value="$PROJECT_DIR$/championship" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/design-system" />
+            <option value="$PROJECT_DIR$/firebase" />
+            <option value="$PROJECT_DIR$/firebase-api" />
             <option value="$PROJECT_DIR$/image-loader" />
             <option value="$PROJECT_DIR$/login" />
             <option value="$PROJECT_DIR$/navigation" />

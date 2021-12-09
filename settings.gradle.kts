@@ -6,14 +6,17 @@ pluginManagement {
     }
     resolutionStrategy {
         eachPlugin {
-            if (requested.id.id.startsWith("com.android")){
-                useModule("com.android.tools.build:gradle:7.0.2")
-            }
-            if (requested.id.id.startsWith("org.jetbrains.kotlin")){
+            if (requested.id.id.startsWith("org.jetbrains.kotlin")) {
                 useVersion("1.5.30")
             }
-            if (requested.id.id.startsWith("androidx.navigation")){
+            if (requested.id.id.startsWith("com.android")) {
+                useModule("com.android.tools.build:gradle:7.0.2")
+            }
+            if (requested.id.id.startsWith("androidx.navigation")) {
                 useModule("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5")
+            }
+            if (requested.id.id.startsWith("com.google.gms")) {
+                useModule("com.google.gms:google-services:4.3.10")
             }
         }
     }
@@ -40,3 +43,5 @@ include(":championship")
 include(":calendar")
 include(":login")
 include(":image-loader")
+include(":firebase")
+include(":firebase-api")

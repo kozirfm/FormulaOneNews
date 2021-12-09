@@ -15,12 +15,16 @@ interface RetrofitService :
     NewsRemoteService,
     LoginRemoteService {
 
-    @GET(".")
+    @GET(API_VERSION)
     override fun getArticlesAsync(@Query("count") count: Int): Deferred<ServerResponse<List<OutNews>>>
 
-    @POST("/login")
+    @POST("$API_VERSION/login")
     override fun getUserTokenAsync(): Deferred<ServerResponse<String>>
 
-    @POST("/registration")
+    @POST("$API_VERSION/registration")
     override fun registrationUserAsync(): Deferred<ServerResponse<UserToken>>
+
+    private companion object{
+        const val API_VERSION = "/v2"
+    }
 }
