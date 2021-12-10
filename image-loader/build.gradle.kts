@@ -6,6 +6,15 @@ plugins {
 
 android {
     compileSdk = Config.compileSdk
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Config.composeVersion
+        kotlinCompilerVersion = Config.kotlinVersion
+    }
 }
 
 repositories {
@@ -21,6 +30,7 @@ dependencies {
     kapt(Dependencies.Dagger.compiler)
     //Coil
     implementation(Dependencies.Coil.core)
+    implementation(Dependencies.Coil.compose)
     //Modules
     implementation(project(Modules.core))
 }

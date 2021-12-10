@@ -53,8 +53,9 @@ object Dependencies {
     }
 
     object Coil {
-        private const val version = "1.2.2"
+        private const val version = "1.4.0"
         const val core = "io.coil-kt:coil:$version"
+        const val compose = "io.coil-kt:coil-compose:$version"
     }
 
     object Lifecycle {

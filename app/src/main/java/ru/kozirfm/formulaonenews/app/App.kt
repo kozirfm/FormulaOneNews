@@ -11,16 +11,16 @@ import ru.kozirfm.news.di.NewsDependenciesProvider
 
 class App : Application() {
 
-    private val imageLoaderComponent = ImageLoaderFeature.getComponent()
     private val networkComponent = NetworkFeature.getComponent()
     private val navigationComponent = NavigationFeature.getComponent()
+    private val imageLoaderComponent = ImageLoaderFeature.getComponent()
 
     override fun onCreate() {
         super.onCreate()
 //        FirebaseMessaging.getInstance().subscribeToTopic("all")
         CoreDependenciesProvider.set(navigationComponent)
         LoginDependenciesProvider.set(networkComponent, navigationComponent)
-        NewsDependenciesProvider.set(networkComponent, navigationComponent)
+        NewsDependenciesProvider.set(networkComponent, navigationComponent, imageLoaderComponent)
     }
 
 }

@@ -16,6 +16,8 @@
         <entry key="../../../../layout/compose-model-1638485974317.xml" value="0.34155844155844156" />
         <entry key="../../../../layout/compose-model-1639082870638.xml" value="0.2347572106608251" />
         <entry key="../../../../layout/compose-model-1639088535351.xml" value="0.24074074074074073" />
+        <entry key="../../../../layout/compose-model-1639134808162.xml" value="0.24074074074074073" />
+        <entry key="../../../../layout/compose-model-1639164733680.xml" value="0.1" />
         <entry key="..\:/Android/AndroidProject/formula_one_news/app/src/main/res/layout/activity_main.xml" value="0.24818840579710144" />
         <entry key="..\:/Android/AndroidProject/formula_one_news/app/src/main/res/layout/fragment_main.xml" value="0.24818840579710144" />
         <entry key="..\:/Android/AndroidProject/formula_one_news/common/src/main/res/layout/fragment_main.xml" value="0.24818840579710144" />
@@ -36,6 +38,7 @@
         <entry key="core/src/main/res/layout/activity_splash.xml" value="0.1" />
         <entry key="core/src/main/res/layout/s.xml" value="0.2115036231884058" />
         <entry key="core/src/main/res/menu/menu_bottom_navigation.xml" value="0.3098958333333333" />
+        <entry key="news/src/main/res/layout/fragment_news.xml" value="0.2115036231884058" />
       </map>
     </option>
   </component>

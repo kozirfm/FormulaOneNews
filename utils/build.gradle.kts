@@ -15,5 +15,7 @@ repositories {
 dependencies {
     //Common
     implementation(Dependencies.Common.core)
+    //Coroutines
+    implementation(Dependencies.Coroutines.core)
 
 }

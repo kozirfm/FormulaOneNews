@@ -9,6 +9,7 @@ object NewsFeature {
             .builder()
             .networkDependencies(NewsDependenciesProvider.networkDependencies)
             .navigationDependencies(NewsDependenciesProvider.navigationDependencies)
+            .imageLoaderDependencies(NewsDependenciesProvider.imageLoaderDependencies)
             .build()
     }
 }

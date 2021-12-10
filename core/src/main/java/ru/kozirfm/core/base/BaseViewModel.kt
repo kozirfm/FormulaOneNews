@@ -14,4 +14,8 @@ abstract class BaseViewModel : ViewModel(), EventsDispatcher {
 
     override val events = EventQueue()
 
+    companion object {
+        const val MIN_LOADING_TIMEOUT = 1500L
+    }
+
 }

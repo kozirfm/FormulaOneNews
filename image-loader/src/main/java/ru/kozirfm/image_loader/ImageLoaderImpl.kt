@@ -1,20 +1,19 @@
 package ru.kozirfm.image_loader
 
 import android.widget.ImageView
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.painter.Painter
+import coil.compose.rememberImagePainter
 import coil.loadAny
-import coil.request.Disposable
 
 class ImageLoaderImpl : ImageLoader {
 
-    private val disposable = mutableListOf<Disposable>()
-
     override fun load(imageView: ImageView, any: Any) {
         imageView.loadAny(any)
-            .also { disposable.add(it) }
     }
 
-    override fun clear() {
-        disposable.forEach { it.dispose() }
+    @Composable
+    override fun load(any: Any?): Painter {
+        return rememberImagePainter(data = any)
     }
-
 }
