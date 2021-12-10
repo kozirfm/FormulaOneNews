@@ -1,5 +1,8 @@
 package ru.kozirfm.news.di
 
+import androidx.compose.material.ExperimentalMaterialApi
+
+@ExperimentalMaterialApi
 object NewsFeature {
     fun getComponent(): NewsComponent {
         return DaggerNewsComponent
