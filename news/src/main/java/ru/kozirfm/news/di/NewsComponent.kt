@@ -1,5 +1,6 @@
 package ru.kozirfm.news.di
 
+import androidx.compose.material.ExperimentalMaterialApi
 import dagger.Component
 import ru.kozirfm.core.di.CoreDependencies
 import ru.kozirfm.core.di.annotation.PerFeature
@@ -12,6 +13,7 @@ import ru.kozirfm.news.ui.NewsFragment
     modules = [NewsModule::class],
     dependencies = [NetworkDependencies::class, NavigationDependencies::class]
 )
+@ExperimentalMaterialApi
 interface NewsComponent: NewsDependencies {
     fun inject(newsFragment: NewsFragment)
 }

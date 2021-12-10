@@ -13,15 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FormulaOneNews"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.MainActivity"
+        <activity
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name="ru.kozirfm.firebase.FirebaseService"
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="false" />
+
+        <service
+            android:name="ru.kozirfm.firebase.FirebaseService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
