@@ -11,7 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.create
-import ru.kozirfm.core.di.annotation.AppScope
+import ru.kozirfm.di.annotation.AppScope
 import ru.kozirfm.network.retrofit.RetrofitService
 import ru.kozirfm.network.utils.ResponseHandlerImpl
 import ru.kozirfm.network_api.utils.ResponseHandler
@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit
 class NetworkModule {
 
     @ExperimentalSerializationApi
-    @AppScope
+    @ru.kozirfm.di.annotation.AppScope
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): RetrofitService {
 
@@ -36,7 +36,7 @@ class NetworkModule {
             .build().create()
     }
 
-    @AppScope
+    @ru.kozirfm.di.annotation.AppScope
     @Provides
     fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
@@ -47,13 +47,13 @@ class NetworkModule {
             .build()
     }
 
-    @AppScope
+    @ru.kozirfm.di.annotation.AppScope
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
-    @AppScope
+    @ru.kozirfm.di.annotation.AppScope
     @Provides
     fun provideResponseHandler(): ResponseHandler {
         return ResponseHandlerImpl()

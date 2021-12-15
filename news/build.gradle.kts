@@ -7,8 +7,11 @@ plugins {
 }
 
 android {
-
-    compileSdk = Config.compileSdk
+    defaultConfig {
+        minSdk = Config.minSdk
+        compileSdk = Config.compileSdk
+        targetSdk = Config.targetSdk
+    }
     
     buildFeatures {
         compose = true
@@ -60,9 +63,10 @@ dependencies {
     implementation(Dependencies.Compose.iconsExtended)
 
     //Modules
-    implementation(project(Modules.core))
+    implementation(project(Modules.base))
+    implementation(project(Modules.coreApi))
     implementation(project(Modules.utils))
     implementation(project(Modules.networkApi))
     implementation(project(Modules.navigationApi))
-    implementation(project(Modules.imageLoader))
+    implementation(project(Modules.imageLoaderApi))
 }

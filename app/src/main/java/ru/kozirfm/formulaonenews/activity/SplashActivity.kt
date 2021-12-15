@@ -7,8 +7,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenResumed
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import ru.kozirfm.core.R
-import ru.kozirfm.core.base.BaseActivity
+import ru.kozirfm.base.BaseActivity
+import ru.kozirfm.base.R
 import java.util.concurrent.TimeUnit
 
 @SuppressLint("CustomSplashScreen")

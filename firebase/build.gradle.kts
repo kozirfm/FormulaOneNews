@@ -1,10 +1,15 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    kotlin("kapt")
 }
 
 android {
-    compileSdk = Config.compileSdk
+    defaultConfig {
+        minSdk = Config.minSdk
+        compileSdk = Config.compileSdk
+        targetSdk = Config.targetSdk
+    }
 }
 
 repositories {
@@ -12,18 +17,24 @@ repositories {
     mavenCentral()
 }
 
-
 dependencies {
     //Common
     implementation(Dependencies.Common.core)
-    implementation(Dependencies.Common.appcompat)
-    implementation(Dependencies.Common.material)
-    implementation(Dependencies.Common.fragment)
 
     //Firebase
     implementation(platform(Dependencies.Firebase.bom))
     implementation(Dependencies.Firebase.messaging)
 
+    //Dagger
+    implementation(Dependencies.Dagger.core)
+    kapt(Dependencies.Dagger.compiler)
+
+    //Coroutines
+    implementation(Dependencies.Coroutines.core)
+
     //Modules
+    implementation(project(Modules.base))
+    implementation(project(Modules.coreApi))
+    implementation(project(Modules.utils))
     implementation(project(Modules.firebaseApi))
 }

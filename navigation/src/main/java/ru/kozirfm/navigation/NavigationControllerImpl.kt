@@ -12,7 +12,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.redmadrobot.extensions.lifecycle.observe
 import ru.kozirfm.navigation_api.NavigationController
-import ru.kozirfm.navigation_api.NavigationDirection
 import ru.kozirfm.navigation_api.NavigationEvent
 import ru.kozirfm.navigation_api.setupWithNavController
 import ru.kozirfm.utils.extensions.visible
@@ -33,7 +32,8 @@ class NavigationControllerImpl : NavigationController {
             navGraphIds = listOf(
                 R.navigation.menu_news_nav_graph,
                 R.navigation.menu_championship_nav_graph,
-                R.navigation.menu_calendar_nav_graph
+                R.navigation.menu_calendar_nav_graph,
+                R.navigation.menu_profile_nav_graph
             )
         )
         fragment.observe(navController) { controller ->

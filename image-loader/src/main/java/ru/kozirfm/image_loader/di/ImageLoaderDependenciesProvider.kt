@@ -1,6 +1,6 @@
 package ru.kozirfm.image_loader.di
 
-import ru.kozirfm.core.di.CoreDependencies
+import ru.kozirfm.core_api.di.CoreDependencies
 
 object ImageLoaderDependenciesProvider {
     var coreDependencies: CoreDependencies? = null

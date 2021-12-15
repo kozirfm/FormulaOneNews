@@ -5,14 +5,14 @@
     android:id="@+id/root_nav_graph"
     app:startDestination="@id/fragment_main">
 
-    <include app:graph="@navigation/login_nav_graph"/>
     <include app:graph="@navigation/menu_news_nav_graph" />
     <include app:graph="@navigation/menu_championship_nav_graph" />
     <include app:graph="@navigation/menu_calendar_nav_graph" />
+    <include app:graph="@navigation/menu_profile_nav_graph" />
 
     <fragment
         android:id="@+id/fragment_main"
-        android:name="ru.kozirfm.core.main.MainFragment"
+        android:name="ru.kozirfm.main.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main" />
 

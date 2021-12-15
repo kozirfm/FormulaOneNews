@@ -79,4 +79,9 @@ object Dependencies {
         const val bom = "com.google.firebase:firebase-bom:$version"
         const val messaging = "com.google.firebase:firebase-messaging-ktx"
     }
+
+    object Preference {
+        private const val version = "1.1.1"
+        const val core = "androidx.preference:preference-ktx:$version"
+    }
 }

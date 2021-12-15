@@ -4,7 +4,11 @@ plugins {
 }
 
 android {
-    compileSdk = Config.compileSdk
+    defaultConfig {
+        minSdk = Config.minSdk
+        compileSdk = Config.compileSdk
+        targetSdk = Config.targetSdk
+    }
 }
 
 repositories {
@@ -13,9 +17,6 @@ repositories {
 }
 
 dependencies {
-    //Common
     implementation(Dependencies.Common.core)
-    //Coroutines
     implementation(Dependencies.Coroutines.core)
-
 }

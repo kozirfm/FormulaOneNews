@@ -6,7 +6,11 @@ plugins {
 }
 
 android {
-    compileSdk = Config.compileSdk
+    defaultConfig {
+        minSdk = Config.minSdk
+        compileSdk = Config.compileSdk
+        targetSdk = Config.targetSdk
+    }
 }
 
 repositories {
@@ -35,7 +39,8 @@ dependencies {
     implementation(Dependencies.Serialization.core)
 
     //Modules
-    implementation(project(Modules.core))
+    implementation(project(Modules.base))
+    implementation(project(Modules.coreApi))
     implementation(project(Modules.networkApi))
     //Features
     implementation(project(Features.login))

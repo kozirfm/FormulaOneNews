@@ -6,7 +6,11 @@ plugins {
 }
 
 android {
-    compileSdk = Config.compileSdk
+    defaultConfig {
+        minSdk = Config.minSdk
+        compileSdk = Config.compileSdk
+        targetSdk = Config.targetSdk
+    }
 }
 
 repositories {
@@ -30,7 +34,8 @@ dependencies {
     implementation(Dependencies.RedMadRobot.extensions)
 
     //Modules
-    implementation(project(Modules.core))
+    implementation(project(Modules.base))
+    implementation(project(Modules.coreApi))
     implementation(project(Modules.navigationApi))
     implementation(project(Modules.utils))
 

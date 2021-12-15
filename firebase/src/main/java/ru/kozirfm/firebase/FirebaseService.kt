@@ -1,20 +1,30 @@
 package ru.kozirfm.firebase
 
-import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import ru.kozirfm.core_api.preferences.PersistentStorage
+import ru.kozirfm.firebase.Constants.FIREBASE_TOKEN
+import ru.kozirfm.firebase.di.FirebaseFeature
+import javax.inject.Inject
 
-class FirebaseService: FirebaseMessagingService() {
+class FirebaseService : FirebaseMessagingService() {
 
-    override fun onNewToken(p0: String) {
-        super.onNewToken(p0)
-        //Send new token to server
-        Log.e("NEW_TOKEN", p0)
+    init {
+        FirebaseFeature.getComponent().inject(this)
     }
 
-    override fun onMessageReceived(p0: RemoteMessage) {
-        super.onMessageReceived(p0)
+    @set:Inject
+    var persistentStorage: PersistentStorage? = null
+
+    override fun onNewToken(token: String) {
+        super.onNewToken(token)
+        persistentStorage?.save(FIREBASE_TOKEN, token)
+    }
+
+    override fun onMessageReceived(message: RemoteMessage) {
+        super.onMessageReceived(message)
         //Get data from message when app onResumed
-        println(p0.data)
+        println(message.data)
     }
+
 }

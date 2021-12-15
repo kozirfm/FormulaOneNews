@@ -4,6 +4,6 @@ import kotlinx.coroutines.Deferred
 import ru.kozirfm.network_api.entity.ServerResponse
 
 interface LoginRemoteService {
-    fun getUserTokenAsync(): Deferred<ServerResponse<*>>
-    fun registrationUserAsync(): Deferred<ServerResponse<*>>
+    fun signInAsync(): Deferred<ServerResponse<*>>
+    fun signUpAsync(): Deferred<ServerResponse<*>>
 }

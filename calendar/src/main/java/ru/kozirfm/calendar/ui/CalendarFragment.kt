@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import androidx.compose.material.Text
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
+import ru.kozirfm.base.BaseFragment
 import ru.kozirfm.calendar.R
-import ru.kozirfm.core.base.BaseFragment
 
 class CalendarFragment : BaseFragment(R.layout.fragment_calendar) {
 

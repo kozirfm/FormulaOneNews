@@ -2,15 +2,14 @@ package ru.kozirfm.image_loader.di
 
 import dagger.Module
 import dagger.Provides
-import ru.kozirfm.core.di.annotation.AppScope
-import ru.kozirfm.core.di.annotation.PerFeature
-import ru.kozirfm.image_loader.ImageLoader
+import ru.kozirfm.di.annotation.AppScope
 import ru.kozirfm.image_loader.ImageLoaderImpl
+import ru.kozirfm.image_loader_api.ImageLoader
 
 @Module
 class ImageLoaderModule {
 
-    @AppScope
+    @ru.kozirfm.di.annotation.AppScope
     @Provides
     fun provideImageLoader(): ImageLoader {
         return ImageLoaderImpl()

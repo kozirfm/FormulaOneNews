@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import coil.compose.rememberImagePainter
 import coil.loadAny
+import ru.kozirfm.image_loader_api.ImageLoader
 
 class ImageLoaderImpl : ImageLoader {
 

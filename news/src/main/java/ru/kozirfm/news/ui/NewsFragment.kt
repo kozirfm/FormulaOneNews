@@ -7,21 +7,12 @@ import android.widget.FrameLayout
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.flowWithLifecycle
-import androidx.lifecycle.lifecycleScope
 import com.redmadrobot.extensions.lifecycle.observe
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import ru.kozirfm.core.base.BaseFragment
-import ru.kozirfm.core.uistate.UiError
-import ru.kozirfm.core.uistate.UiLoading
-import ru.kozirfm.core.uistate.UiSuccess
-import ru.kozirfm.image_loader.ImageLoader
+import ru.kozirfm.base.BaseFragment
+import ru.kozirfm.image_loader_api.ImageLoader
 import ru.kozirfm.news.R
 import ru.kozirfm.news.di.NewsFeature
-import ru.kozirfm.news.entity.InNews
 import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
@@ -46,22 +37,8 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
         val composeView = ComposeView(context = context ?: return)
         view.findViewById<FrameLayout>(R.id.newsContainer).addView(composeView)
         observe(viewModel.events, this::handleEvent)
-        lifecycleScope.launch {
-            viewModel.getData()
-                .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-                .collect { state ->
-                    composeView.setContent {
-                        when (state) {
-                            is UiLoading -> NewsShimmer()
-                            is UiSuccess<*> -> NewsModalBottomSheet(
-                                news = state.data as List<InNews>,
-                                imageLoader
-                            )
-                            is UiError -> ErrorScreen(state.message)
-                        }
-
-                    }
-                }
+        composeView.setContent {
+            NewsScreen(viewModel = viewModel, imageLoader = imageLoader)
         }
     }
 }

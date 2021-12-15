@@ -2,11 +2,11 @@ package ru.kozirfm.di
 
 import dagger.Module
 import dagger.Provides
-import ru.kozirfm.core.di.annotation.AppScope
-import ru.kozirfm.navigation.NavigationControllerImpl
+import ru.kozirfm.di.annotation.AppScope
 import ru.kozirfm.navigation.NavigateRootDirectionImpl
-import ru.kozirfm.navigation_api.NavigationController
+import ru.kozirfm.navigation.NavigationControllerImpl
 import ru.kozirfm.navigation_api.NavigateRootDirection
+import ru.kozirfm.navigation_api.NavigationController
 
 @Module
 class NavigationModule {

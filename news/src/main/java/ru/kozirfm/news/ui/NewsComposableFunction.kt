@@ -17,20 +17,39 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
-import ru.kozirfm.image_loader.ImageLoader
+import ru.kozirfm.image_loader_api.ImageLoader
 import ru.kozirfm.news.R
 import ru.kozirfm.news.entity.InNews
+import ru.kozirfm.uistate.UiError
+import ru.kozirfm.uistate.UiLoading
+import ru.kozirfm.uistate.UiSuccess
 import ru.kozirfm.utils.extensions.emptyString
 
-@ExperimentalMaterialApi
 @Composable
+@ExperimentalMaterialApi
+@Suppress("UNCHECKED_CAST")
+fun NewsScreen(viewModel: NewsViewModel, imageLoader: ImageLoader?) {
+    val uiState = viewModel.getData().collectAsState()
+    when (val state = uiState.value) {
+        is UiLoading -> NewsShimmer()
+        is UiSuccess<*> -> NewsModalBottomSheet(
+            news = state.data as List<InNews>,
+            imageLoader
+        )
+        is UiError -> ErrorScreen(state.message)
+    }
+}
+
+@Composable
+@ExperimentalMaterialApi
 fun NewsModalBottomSheet(news: List<InNews>, imageLoader: ImageLoader?) {
-    val state =
-        rememberModalBottomSheetState(initialValue = ModalBottomSheetValue.Hidden)
+    val bottomSheetState = rememberModalBottomSheetState(
+        initialValue = ModalBottomSheetValue.Hidden
+    )
     val scope = rememberCoroutineScope()
     val article = remember { mutableStateOf(emptyString()) }
     ModalBottomSheetLayout(
-        sheetState = state,
+        sheetState = bottomSheetState,
         sheetContent = {
             Text(
                 modifier = Modifier
@@ -47,7 +66,7 @@ fun NewsModalBottomSheet(news: List<InNews>, imageLoader: ImageLoader?) {
                 Item(inNews = it, imageLoader = imageLoader) {
                     scope.launch {
                         article.value = it.text
-                        state.show()
+                        bottomSheetState.show()
                     }
                 }
             }
@@ -72,7 +91,9 @@ fun Item(inNews: InNews, imageLoader: ImageLoader?, onItemClick: () -> Unit) {
                         painter = imageLoader.load(any = image),
                         contentDescription = emptyString(),
                         contentScale = ContentScale.Crop,
-                        modifier = Modifier.fillMaxWidth().height(200.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(200.dp)
                     )
                 }
             }
@@ -86,8 +107,10 @@ fun Item(inNews: InNews, imageLoader: ImageLoader?, onItemClick: () -> Unit) {
                     .padding(8.dp, 4.dp)
                     .background(Color.Gray)
             )
-            Text(modifier = Modifier.padding(8.dp, 0.dp, 8.dp, 8.dp),
-                text = inNews.date)
+            Text(
+                modifier = Modifier.padding(8.dp, 0.dp, 8.dp, 8.dp),
+                text = inNews.date
+            )
         }
     }
 }

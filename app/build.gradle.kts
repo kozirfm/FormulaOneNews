@@ -11,11 +11,10 @@ repositories {
 }
 
 android {
-    compileSdk = Config.compileSdk
-
     defaultConfig {
         applicationId = Config.applicationId
         minSdk = Config.minSdk
+        compileSdk = Config.compileSdk
         targetSdk = Config.targetSdk
         versionCode = Config.versionCode
         versionName = Config.versionName
@@ -63,7 +62,9 @@ dependencies {
     implementation(Dependencies.Firebase.messaging)
 
     //Modules
+    implementation(project(Modules.base))
     implementation(project(Modules.core))
+    implementation(project(Modules.coreApi))
     implementation(project(Modules.utils))
     implementation(project(Modules.designSystem))
     implementation(project(Modules.navigation))
@@ -71,6 +72,7 @@ dependencies {
     implementation(project(Modules.network))
     implementation(project(Modules.networkApi))
     implementation(project(Modules.imageLoader))
+    implementation(project(Modules.imageLoaderApi))
     implementation(project(Modules.firebase))
     implementation(project(Modules.firebaseApi))
 

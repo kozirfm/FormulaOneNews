@@ -1,6 +1,6 @@
 package ru.kozirfm.news.di
 
-import ru.kozirfm.image_loader.di.ImageLoaderDependencies
+import ru.kozirfm.image_loader_api.di.ImageLoaderDependencies
 import ru.kozirfm.navigation_api.di.NavigationDependencies
 import ru.kozirfm.network_api.di.NetworkDependencies
 

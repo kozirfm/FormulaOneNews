@@ -7,9 +7,15 @@ import javax.inject.Inject
 
 class LoginRepositoryImpl
 @Inject
-constructor(private val remoteDataSource: LoginRemoteDataSource) : LoginRepository {
+constructor(
+    private val remoteDataSource: LoginRemoteDataSource
+) : LoginRepository {
 
-    override suspend fun getUserToken(login: Login): ResponseState {
-        return remoteDataSource.getUserToken(login)
+    override suspend fun signIn(login: Login): ResponseState {
+        return remoteDataSource.signIn(login = login)
+    }
+
+    override suspend fun signUp(login: Login): ResponseState {
+        return remoteDataSource.signUp(login = login)
     }
 }

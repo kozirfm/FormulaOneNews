@@ -19,10 +19,10 @@ interface RetrofitService :
     override fun getArticlesAsync(@Query("count") count: Int): Deferred<ServerResponse<List<OutNews>>>
 
     @POST("$API_VERSION/login")
-    override fun getUserTokenAsync(): Deferred<ServerResponse<String>>
+    override fun signInAsync(): Deferred<ServerResponse<String>>
 
     @POST("$API_VERSION/registration")
-    override fun registrationUserAsync(): Deferred<ServerResponse<UserToken>>
+    override fun signUpAsync(): Deferred<ServerResponse<UserToken>>
 
     private companion object{
         const val API_VERSION = "/v2"

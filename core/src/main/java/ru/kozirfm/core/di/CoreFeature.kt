@@ -1,10 +1,12 @@
 package ru.kozirfm.core.di
 
+import android.content.Context
+
 object CoreFeature {
-    fun getComponent(): CoreComponent {
+    fun getComponent(context: Context): CoreComponent {
         return DaggerCoreComponent
             .builder()
-            .navigationDependencies(CoreDependenciesProvider.navigationDependencies)
+            .context(context)
             .build()
     }
 }

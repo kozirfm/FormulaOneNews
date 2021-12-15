@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
-import ru.kozirfm.core.di.ViewModelModule
-import ru.kozirfm.core.di.annotation.PerFeature
-import ru.kozirfm.core.viewmodel.ViewModelKey
+import ru.kozirfm.di.ViewModelModule
+import ru.kozirfm.di.annotation.PerFeature
+import ru.kozirfm.viewmodel.ViewModelKey
 import ru.kozirfm.news.datasourse.NewsLocalDataSource
 import ru.kozirfm.news.datasourse.NewsLocalDataSourceImpl
 import ru.kozirfm.news.datasourse.NewsRemoteDataSource

@@ -2,7 +2,7 @@ package ru.kozirfm.formulaonenews.activity
 
 import android.os.Bundle
 import androidx.navigation.findNavController
-import ru.kozirfm.core.base.BaseActivity
+import ru.kozirfm.base.BaseActivity
 import ru.kozirfm.formulaonenews.R
 
 class MainActivity : BaseActivity() {

@@ -1,12 +1,18 @@
 package ru.kozirfm.core.di
 
+import android.content.Context
+import dagger.BindsInstance
 import dagger.Component
-import ru.kozirfm.core.base.BaseFragment
-import ru.kozirfm.core.di.annotation.PerFeature
-import ru.kozirfm.navigation_api.di.NavigationDependencies
+import ru.kozirfm.core_api.di.CoreDependencies
+import ru.kozirfm.di.annotation.AppScope
 
-@PerFeature
-@Component(dependencies = [NavigationDependencies::class])
-interface CoreComponent {
-    fun inject(fragment: BaseFragment)
+@AppScope
+@Component(modules = [CoreModule::class])
+interface CoreComponent : CoreDependencies {
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun context(context: Context): Builder
+        fun build(): CoreComponent
+    }
 }
