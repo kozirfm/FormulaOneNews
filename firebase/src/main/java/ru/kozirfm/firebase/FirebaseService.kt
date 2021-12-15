@@ -2,9 +2,9 @@ package ru.kozirfm.firebase
 
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import ru.kozirfm.core_api.preferences.PersistentStorage
 import ru.kozirfm.firebase.Constants.FIREBASE_TOKEN
 import ru.kozirfm.firebase.di.FirebaseFeature
+import ru.kozirfm.persistent_storage_api.PersistentStorage
 import javax.inject.Inject
 
 class FirebaseService : FirebaseMessagingService() {

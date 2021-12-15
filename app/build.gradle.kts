@@ -75,6 +75,8 @@ dependencies {
     implementation(project(Modules.imageLoaderApi))
     implementation(project(Modules.firebase))
     implementation(project(Modules.firebaseApi))
+    implementation(project(Modules.persistentStorage))
+    implementation(project(Modules.persistentStorageApi))
 
     //Features
     implementation(project(Features.login))

@@ -18,24 +18,16 @@ repositories {
 }
 
 dependencies {
-    //Common
     implementation(Dependencies.Common.core)
 
-    //Firebase
-    implementation(platform(Dependencies.Firebase.bom))
-    implementation(Dependencies.Firebase.messaging)
-
-    //Dagger
     implementation(Dependencies.Dagger.core)
     kapt(Dependencies.Dagger.compiler)
 
-    //Coroutines
-    implementation(Dependencies.Coroutines.core)
+    implementation(Dependencies.Preference.core)
 
-    //Modules
     implementation(project(Modules.base))
     implementation(project(Modules.coreApi))
-    implementation(project(Modules.utils))
-    implementation(project(Modules.firebaseApi))
     implementation(project(Modules.persistentStorageApi))
+    implementation(project(Modules.designSystem))
+    implementation(project(Modules.utils))
 }

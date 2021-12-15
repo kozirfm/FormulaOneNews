@@ -13,6 +13,8 @@ object Modules {
     val imageLoaderApi = module("image-loader-api")
     val firebase = module("firebase")
     val firebaseApi = module("firebase-api")
+    val persistentStorage = module("persistent-storage")
+    val persistentStorageApi = module("persistent-storage-api")
 
     private fun module(module: String): Map<String, String> {
         return mapOf("path" to ":$module")

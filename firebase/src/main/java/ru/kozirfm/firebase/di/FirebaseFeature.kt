@@ -4,7 +4,7 @@ object FirebaseFeature {
     fun getComponent(): FirebaseComponent {
         return DaggerFirebaseComponent
             .builder()
-            .coreDependencies(FirebaseDependenciesProvider.coreDependencies)
+            .persistentStorageDependencies(FirebaseDependenciesProvider.persistentStorageDependencies)
             .build()
     }
 }

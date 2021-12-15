@@ -1,12 +1,12 @@
 package ru.kozirfm.firebase.di
 
-import ru.kozirfm.core_api.di.CoreDependencies
+import ru.kozirfm.persistent_storage_api.di.PersistentStorageDependencies
 
 object FirebaseDependenciesProvider {
 
-    var coreDependencies: CoreDependencies? = null
+    var persistentStorageDependencies: PersistentStorageDependencies? = null
 
-    fun set(coreDependencies: CoreDependencies) {
-        this.coreDependencies = coreDependencies
+    fun set(persistentStorageDependencies: PersistentStorageDependencies) {
+        this.persistentStorageDependencies = persistentStorageDependencies
     }
 }

@@ -29,6 +29,8 @@
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/network-api" />
             <option value="$PROJECT_DIR$/news" />
+            <option value="$PROJECT_DIR$/persistent-storage" />
+            <option value="$PROJECT_DIR$/persistent-storage-api" />
             <option value="$PROJECT_DIR$/utils" />
           </set>
         </option>

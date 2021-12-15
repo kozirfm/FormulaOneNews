@@ -1,8 +1,8 @@
 package ru.kozirfm.firebase
 
-import ru.kozirfm.core_api.preferences.PersistentStorage
 import ru.kozirfm.firebase.Constants.FIREBASE_TOKEN
 import ru.kozirfm.firebase_api.FirebaseHelper
+import ru.kozirfm.persistent_storage_api.PersistentStorage
 import javax.inject.Inject
 
 class FirebaseHelperImpl

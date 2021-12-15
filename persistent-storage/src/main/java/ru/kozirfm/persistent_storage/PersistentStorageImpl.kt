@@ -1,8 +1,8 @@
-package ru.kozirfm.core.preference
+package ru.kozirfm.persistent_storage
 
 import android.content.Context
 import androidx.preference.PreferenceManager
-import ru.kozirfm.core_api.preferences.PersistentStorage
+import ru.kozirfm.persistent_storage_api.PersistentStorage
 import ru.kozirfm.utils.extensions.emptyString
 import javax.inject.Inject
 

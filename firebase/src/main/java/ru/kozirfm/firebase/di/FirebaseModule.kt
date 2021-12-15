@@ -9,7 +9,7 @@ import ru.kozirfm.firebase_api.FirebaseHelper
 @Module
 interface FirebaseModule {
 
-    @ru.kozirfm.di.annotation.AppScope
+    @AppScope
     @Binds
     fun bindFirebaseHelper(impl: FirebaseHelperImpl): FirebaseHelper
 }
