@@ -1,5 +1,8 @@
 package ru.kozirfm.network.utils
 
+import kotlinx.coroutines.Deferred
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import ru.kozirfm.network_api.entity.ServerResponse
 import ru.kozirfm.network_api.utils.ResponseError
 import ru.kozirfm.network_api.utils.ResponseHandler
@@ -9,23 +12,21 @@ import ru.kozirfm.network_api.utils.ResponseSuccess
 
 class ResponseHandlerImpl : ResponseHandler {
 
-    override fun <T, R> handleResponse(
-        response: ServerResponse<T>,
-        body: (T) -> R
+    override suspend fun <T> handleResponse(
+        response: Deferred<String>,
+        body: (String) -> T
     ): ResponseState {
         return getResponseState(response, body)
     }
 
-    override fun <T> handleResponse(response: ServerResponse<T>): ResponseState {
-        return getResponseState<T, Nothing>(response)
-    }
-
-    private fun <T, R> getResponseState(
-        response: ServerResponse<T>,
-        body: ((T) -> R)? = null
+    private suspend fun <T> getResponseState(
+        deferred: Deferred<String>,
+        body: (String) -> T
     ): ResponseState {
+        val json = deferred.await()
+        val response = Json.decodeFromString<ServerResponse>(json)
         return if (response.state == STATE_OK) {
-            ResponseSuccess(body?.invoke(response.result) ?: response.result)
+            ResponseSuccess(body.invoke(response.result))
         } else {
             ResponseError(response.code, response.message)
         }

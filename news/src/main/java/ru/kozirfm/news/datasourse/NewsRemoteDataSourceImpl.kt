@@ -5,7 +5,6 @@ import kotlinx.serialization.json.Json
 import ru.kozirfm.network_api.services.NewsRemoteService
 import ru.kozirfm.network_api.utils.ResponseHandler
 import ru.kozirfm.network_api.utils.ResponseState
-import ru.kozirfm.news.entity.InNews
 import ru.kozirfm.news.entity.OutNews
 import ru.kozirfm.news.mapper.ToInNewsMapper
 import javax.inject.Inject
@@ -16,11 +15,12 @@ class NewsRemoteDataSourceImpl @Inject constructor(
 ) : NewsRemoteDataSource {
 
     override suspend fun getNews(): ResponseState {
-        return responseHandler.handleResponse<List<OutNews>, List<InNews>>(
-            api.getArticlesAsync(50).await().let { json ->
-                Json.decodeFromString(json)
-            }
-        ) { news -> news.map { ToInNewsMapper.map(it) } }
+        return responseHandler.handleResponse(
+            api.getArticlesAsync(50)
+        ) { result ->
+            Json.decodeFromString<List<OutNews>>(result)
+                .map { ToInNewsMapper.map(it) }
+        }
     }
 
 }
