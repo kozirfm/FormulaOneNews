@@ -1,4 +1,4 @@
-package ru.kozirfm.di.annotation
+package ru.kozirfm.core_api.di.annotation
 
 import javax.inject.Scope
 

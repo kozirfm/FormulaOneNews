@@ -1,8 +1,8 @@
 package ru.kozirfm.login.datasourse
 
-import android.util.Log
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import ru.kozirfm.login.entity.Login
-import ru.kozirfm.login.entity.UserToken
 import ru.kozirfm.network_api.services.LoginRemoteService
 import ru.kozirfm.network_api.utils.ResponseHandler
 import ru.kozirfm.network_api.utils.ResponseState
@@ -12,17 +12,23 @@ class LoginRemoteDataSourceImpl
 @Inject
 constructor(
     private val api: LoginRemoteService,
-    private val responseHandler: ResponseHandler
+    private val responseHandler: ResponseHandler,
 ) : LoginRemoteDataSource {
 
     override suspend fun signIn(login: Login): ResponseState {
-        Log.d("SIGN_IN", login.toString())
-        return responseHandler.handleResponse<UserToken>(api.signInAsync())
+        return responseHandler.handleResponse<String>(
+            api.signInAsync(body = login.toJsonString()).await().let { json ->
+                Json.decodeFromString(json)
+            }
+        )
     }
 
     override suspend fun signUp(login: Login): ResponseState {
-        Log.d("SIGN_UP", login.toString())
-        return responseHandler.handleResponse<UserToken>(api.signUpAsync())
+        return responseHandler.handleResponse<String>(
+            api.signUpAsync(body = login.toJsonString()).await().let { json ->
+                Json.decodeFromString(json)
+            }
+        )
     }
 
 }

@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -19,4 +20,6 @@ repositories {
 dependencies {
     implementation(Dependencies.Common.core)
     implementation(Dependencies.Coroutines.core)
+
+    implementation(Dependencies.Serialization.core)
 }

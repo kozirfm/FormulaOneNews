@@ -33,7 +33,7 @@ object Dependencies {
     }
 
     object Serialization {
-        private const val version = "1.2.2"
+        private const val version = "1.3.1"
         const val core = "org.jetbrains.kotlinx:kotlinx-serialization-json:$version"
     }
 
@@ -44,6 +44,7 @@ object Dependencies {
             "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
         const val serializationConverter =
             "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
+        const val scalarsConverter = "com.squareup.retrofit2:converter-scalars:$version"
     }
 
     object OkHttp {

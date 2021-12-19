@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     kotlin("android")
     kotlin("kapt")
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -50,6 +51,8 @@ dependencies {
 
     //Coil
     implementation(Dependencies.Coil.core)
+
+    implementation(Dependencies.Serialization.core)
 
     //Compose
     implementation(Dependencies.Compose.ui)

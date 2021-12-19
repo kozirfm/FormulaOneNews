@@ -1,4 +1,4 @@
-package ru.kozirfm.uistate
+package ru.kozirfm.core_api.uistate
 
 sealed class UiState
 object UiLoading : UiState()

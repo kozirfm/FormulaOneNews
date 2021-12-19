@@ -1,17 +1,15 @@
 package ru.kozirfm.network.di
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import dagger.Module
 import dagger.Provides
 import kotlinx.serialization.ExperimentalSerializationApi
-import kotlinx.serialization.json.Json
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.create
-import ru.kozirfm.di.annotation.AppScope
+import ru.kozirfm.core_api.di.annotation.AppScope
 import ru.kozirfm.network.retrofit.RetrofitService
 import ru.kozirfm.network.utils.ResponseHandlerImpl
 import ru.kozirfm.network_api.utils.ResponseHandler
@@ -21,22 +19,19 @@ import java.util.concurrent.TimeUnit
 class NetworkModule {
 
     @ExperimentalSerializationApi
-    @ru.kozirfm.di.annotation.AppScope
+    @AppScope
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): RetrofitService {
 
-        val mediaType = "application/json".toMediaType()
-        val json = Json { ignoreUnknownKeys = true }
-
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(PROD_URL)
             .client(okHttpClient)
-            .addConverterFactory(json.asConverterFactory(mediaType))
+            .addConverterFactory(ScalarsConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build().create()
     }
 
-    @ru.kozirfm.di.annotation.AppScope
+    @AppScope
     @Provides
     fun provideOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
@@ -47,20 +42,20 @@ class NetworkModule {
             .build()
     }
 
-    @ru.kozirfm.di.annotation.AppScope
+    @AppScope
     @Provides
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         return HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
     }
 
-    @ru.kozirfm.di.annotation.AppScope
+    @AppScope
     @Provides
     fun provideResponseHandler(): ResponseHandler {
         return ResponseHandlerImpl()
     }
 
     private companion object {
-        const val BASE_URL = "http://95.52.246.252"
-        const val TEST_URL = "http://127.0.0.1:5050"
+        const val PROD_URL = "http://95.52.246.252"
+        const val STAGE_URL = "http://192.168.31.235:5555"
     }
 }

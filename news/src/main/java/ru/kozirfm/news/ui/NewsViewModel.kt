@@ -5,10 +5,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import ru.kozirfm.base.BaseViewModel
-import ru.kozirfm.uistate.UiError
-import ru.kozirfm.uistate.UiLoading
-import ru.kozirfm.uistate.UiState
-import ru.kozirfm.uistate.UiSuccess
+import ru.kozirfm.core_api.uistate.UiError
+import ru.kozirfm.core_api.uistate.UiLoading
+import ru.kozirfm.core_api.uistate.UiState
+import ru.kozirfm.core_api.uistate.UiSuccess
 import ru.kozirfm.network_api.utils.ResponseError
 import ru.kozirfm.network_api.utils.ResponseSuccess
 import ru.kozirfm.news.usecase.NewsUseCase

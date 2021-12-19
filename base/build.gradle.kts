@@ -41,10 +41,6 @@ dependencies {
     implementation(Dependencies.RedMadRobot.extensions)
 
     implementation(Dependencies.Compose.ui)
-    implementation(Dependencies.Compose.foundation)
-    implementation(Dependencies.Compose.material)
-
-    implementation(Dependencies.Preference.core)
 
     implementation(project(Modules.coreApi))
     implementation(project(Modules.designSystem))

@@ -17,12 +17,12 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
+import ru.kozirfm.core_api.uistate.UiError
+import ru.kozirfm.core_api.uistate.UiLoading
+import ru.kozirfm.core_api.uistate.UiSuccess
 import ru.kozirfm.image_loader_api.ImageLoader
 import ru.kozirfm.news.R
 import ru.kozirfm.news.entity.InNews
-import ru.kozirfm.uistate.UiError
-import ru.kozirfm.uistate.UiLoading
-import ru.kozirfm.uistate.UiSuccess
 import ru.kozirfm.utils.extensions.emptyString
 
 @Composable

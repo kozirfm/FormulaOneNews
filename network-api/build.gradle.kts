@@ -18,18 +18,9 @@ repositories {
 }
 
 dependencies {
-    //Common
     implementation(Dependencies.Common.core)
-    implementation(Dependencies.Common.appcompat)
-    implementation(Dependencies.Common.material)
+    
+    implementation(Dependencies.Serialization.core)
 
-    //Retrofit
-    implementation(Dependencies.Retrofit.core)
-    implementation(Dependencies.Retrofit.coroutinesAdapter)
-    implementation(Dependencies.Retrofit.serializationConverter)
-    implementation(Dependencies.OkHttp.core)
-    implementation(Dependencies.OkHttp.interceptor)
-
-    //Coroutines
     implementation(Dependencies.Coroutines.core)
 }

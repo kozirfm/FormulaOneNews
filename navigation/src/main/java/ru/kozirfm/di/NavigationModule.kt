@@ -2,7 +2,7 @@ package ru.kozirfm.di
 
 import dagger.Module
 import dagger.Provides
-import ru.kozirfm.di.annotation.AppScope
+import ru.kozirfm.core_api.di.annotation.AppScope
 import ru.kozirfm.navigation.NavigateRootDirectionImpl
 import ru.kozirfm.navigation.NavigationControllerImpl
 import ru.kozirfm.navigation_api.NavigateRootDirection

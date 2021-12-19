@@ -5,7 +5,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import ru.kozirfm.di.ViewModelModule
-import ru.kozirfm.di.annotation.PerFeature
+import ru.kozirfm.core_api.di.annotation.PerFeature
 import ru.kozirfm.viewmodel.ViewModelKey
 import ru.kozirfm.login.datasourse.LoginRemoteDataSource
 import ru.kozirfm.login.datasourse.LoginRemoteDataSourceImpl

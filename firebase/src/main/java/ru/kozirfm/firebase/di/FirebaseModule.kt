@@ -2,7 +2,7 @@ package ru.kozirfm.firebase.di
 
 import dagger.Binds
 import dagger.Module
-import ru.kozirfm.di.annotation.AppScope
+import ru.kozirfm.core_api.di.annotation.AppScope
 import ru.kozirfm.firebase.FirebaseHelperImpl
 import ru.kozirfm.firebase_api.FirebaseHelper
 

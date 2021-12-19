@@ -4,7 +4,7 @@ import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
 import ru.kozirfm.core_api.di.CoreDependencies
-import ru.kozirfm.di.annotation.AppScope
+import ru.kozirfm.core_api.di.annotation.AppScope
 
 @AppScope
 @Component(modules = [CoreModule::class])

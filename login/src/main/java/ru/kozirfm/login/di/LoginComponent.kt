@@ -1,7 +1,7 @@
 package ru.kozirfm.login.di
 
 import dagger.Component
-import ru.kozirfm.di.annotation.PerFeature
+import ru.kozirfm.core_api.di.annotation.PerFeature
 import ru.kozirfm.firebase_api.di.FirebaseDependencies
 import ru.kozirfm.login.ui.LoginFragment
 import ru.kozirfm.navigation_api.di.NavigationDependencies

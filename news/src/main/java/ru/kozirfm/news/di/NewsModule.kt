@@ -4,9 +4,8 @@ import androidx.lifecycle.ViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
+import ru.kozirfm.core_api.di.annotation.PerFeature
 import ru.kozirfm.di.ViewModelModule
-import ru.kozirfm.di.annotation.PerFeature
-import ru.kozirfm.viewmodel.ViewModelKey
 import ru.kozirfm.news.datasourse.NewsLocalDataSource
 import ru.kozirfm.news.datasourse.NewsLocalDataSourceImpl
 import ru.kozirfm.news.datasourse.NewsRemoteDataSource
@@ -16,6 +15,7 @@ import ru.kozirfm.news.repository.NewsRepositoryImpl
 import ru.kozirfm.news.ui.NewsViewModel
 import ru.kozirfm.news.usecase.NewsUseCase
 import ru.kozirfm.news.usecase.NewsUseCaseImpl
+import ru.kozirfm.viewmodel.ViewModelKey
 
 @Module(includes = [ViewModelModule::class])
 interface NewsModule {
