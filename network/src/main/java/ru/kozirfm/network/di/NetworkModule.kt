@@ -3,7 +3,6 @@ package ru.kozirfm.network.di
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import dagger.Module
 import dagger.Provides
-import kotlinx.serialization.ExperimentalSerializationApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,11 +17,9 @@ import java.util.concurrent.TimeUnit
 @Module(includes = [ServicesModule::class])
 class NetworkModule {
 
-    @ExperimentalSerializationApi
     @AppScope
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): RetrofitService {
-
         return Retrofit.Builder()
             .baseUrl(PROD_URL)
             .client(okHttpClient)
