@@ -1,0 +1,3 @@
+package ru.kozirfm.image_loader.di
+
+interface ImageLoaderDependencies

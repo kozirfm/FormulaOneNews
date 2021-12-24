@@ -1,7 +1,19 @@
 package ru.kozirfm.network.di
 
-object NetworkFeature {
-    fun getComponent(): NetworkComponent {
-        return DaggerNetworkComponent.create()
+import ru.kozirfm.network_api.di.NetworkFeatureApi
+import javax.inject.Inject
+
+class NetworkFeature @Inject constructor() {
+
+    private val _api: NetworkFeatureApi = DaggerNetworkComponent
+        .create()
+        .also {
+            networkComponent = it
+        }
+
+    fun getApi() = _api
+
+    internal companion object {
+        var networkComponent: NetworkComponent? = null
     }
 }

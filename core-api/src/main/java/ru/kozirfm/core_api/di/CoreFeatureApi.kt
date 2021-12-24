@@ -5,6 +5,6 @@ import android.content.Context
 /**
  * Интерфейс для предоставления зависимостей из модулей app и core
  */
-interface CoreDependencies {
+interface CoreFeatureApi {
     fun getContext(): Context
 }

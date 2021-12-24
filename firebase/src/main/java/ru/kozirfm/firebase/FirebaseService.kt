@@ -1,23 +1,20 @@
 package ru.kozirfm.firebase
 
+import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import ru.kozirfm.firebase.Constants.FIREBASE_TOKEN
-import ru.kozirfm.firebase.di.FirebaseFeature
 import ru.kozirfm.persistent_storage_api.PersistentStorage
 import javax.inject.Inject
 
-class FirebaseService : FirebaseMessagingService() {
-
-    init {
-        FirebaseFeature.getComponent().inject(this)
-    }
+class FirebaseService @Inject constructor() : FirebaseMessagingService() {
 
     @set:Inject
     var persistentStorage: PersistentStorage? = null
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
+        Log.d("TOKEN", token)
         persistentStorage?.save(FIREBASE_TOKEN, token)
     }
 

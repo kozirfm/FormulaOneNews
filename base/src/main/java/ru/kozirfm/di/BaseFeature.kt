@@ -1,10 +1,20 @@
 package ru.kozirfm.di
 
-object BaseFeature {
-    fun getComponent(): BaseComponent {
-        return DaggerBaseComponent
+import javax.inject.Inject
+
+class BaseFeature @Inject constructor(dependencies: BaseDependencies) {
+
+    private val _api: BaseFeatureApi by lazy {
+        DaggerBaseComponent
             .builder()
-            .navigationDependencies(BaseDependenciesProvider.navigationDependencies)
+            .baseDependencies(dependencies)
             .build()
+            .also { baseComponent = it }
+    }
+
+    fun getApi() = _api
+
+    internal companion object {
+        var baseComponent: BaseComponent? = null
     }
 }

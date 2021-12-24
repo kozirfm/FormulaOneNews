@@ -29,7 +29,7 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        NewsFeature.getComponent().inject(this)
+        NewsFeature.newsComponent?.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

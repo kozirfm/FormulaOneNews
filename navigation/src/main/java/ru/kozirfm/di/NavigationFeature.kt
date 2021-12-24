@@ -1,8 +1,17 @@
 package ru.kozirfm.di
 
-object NavigationFeature {
+import ru.kozirfm.navigation_api.di.NavigationFeatureApi
+import javax.inject.Inject
 
-    fun getComponent(): NavigationComponent {
-        return DaggerNavigationComponent.create()
+class NavigationFeature @Inject constructor() {
+
+    private val _api: NavigationFeatureApi = DaggerNavigationComponent
+        .create()
+        .also { navigationComponent = it }
+
+    fun getApi() = _api
+
+    internal companion object {
+        var navigationComponent: NavigationComponent? = null
     }
 }

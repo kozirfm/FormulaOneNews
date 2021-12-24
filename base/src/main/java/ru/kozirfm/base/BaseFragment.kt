@@ -22,7 +22,7 @@ abstract class BaseFragment(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        BaseFeature.getComponent().inject(this)
+        BaseFeature.baseComponent?.inject(this)
     }
 
     override fun onCreateView(

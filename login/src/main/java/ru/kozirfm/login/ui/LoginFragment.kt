@@ -7,8 +7,8 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.viewModels
 import com.redmadrobot.extensions.lifecycle.observe
 import ru.kozirfm.base.BaseFragment
-import ru.kozirfm.viewmodel.ViewModelFactory
 import ru.kozirfm.login.di.LoginFeature
+import ru.kozirfm.viewmodel.ViewModelFactory
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment(useComposeView = true) {
@@ -20,7 +20,7 @@ class LoginFragment : BaseFragment(useComposeView = true) {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        LoginFeature.getComponent().inject(this)
+        LoginFeature.loginComponent?.inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
