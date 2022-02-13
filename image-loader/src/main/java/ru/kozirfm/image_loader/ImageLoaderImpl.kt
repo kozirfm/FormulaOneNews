@@ -5,6 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import coil.compose.rememberImagePainter
 import coil.loadAny
+import coil.size.OriginalSize
 import ru.kozirfm.image_loader_api.ImageLoader
 
 class ImageLoaderImpl : ImageLoader {
@@ -15,6 +16,8 @@ class ImageLoaderImpl : ImageLoader {
 
     @Composable
     override fun load(any: Any?): Painter {
-        return rememberImagePainter(data = any)
+        return rememberImagePainter(data = any, builder = {
+            size(OriginalSize)
+        })
     }
 }

@@ -8,7 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.create
-import ru.kozirfm.core_api.di.annotation.AppScope
+import ru.kozirfm.core.annotation.AppScope
 import ru.kozirfm.network.retrofit.RetrofitService
 import ru.kozirfm.network.utils.ResponseHandlerImpl
 import ru.kozirfm.network_api.utils.ResponseHandler
@@ -54,5 +54,6 @@ class NetworkModule {
     private companion object {
         const val PROD_URL = "http://95.52.246.252"
         const val STAGE_URL = "http://192.168.31.235:5555"
+        const val LOCAL_URL = "http://192.168.31.230:5050"
     }
 }

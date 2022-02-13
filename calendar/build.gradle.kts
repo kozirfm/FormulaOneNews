@@ -61,8 +61,7 @@ dependencies {
     implementation(Dependencies.Compose.iconsExtended)
 
     //Modules
-    implementation(project(Modules.base))
-    implementation(project(Modules.coreApi))
+    implementation(project(Modules.core))
     implementation(project(Modules.utils))
     implementation(project(Modules.networkApi))
     implementation(project(Modules.navigationApi))

@@ -14,29 +14,44 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
-import ru.kozirfm.core_api.uistate.UiError
-import ru.kozirfm.core_api.uistate.UiLoading
-import ru.kozirfm.core_api.uistate.UiSuccess
+import ru.kozirfm.core.presentation.uistate.UiError
+import ru.kozirfm.core.presentation.uistate.UiLoading
+import ru.kozirfm.core.presentation.uistate.UiSuccess
 import ru.kozirfm.image_loader_api.ImageLoader
 import ru.kozirfm.news.R
-import ru.kozirfm.news.entity.InNews
+import ru.kozirfm.news_api.entity.InNews
 import ru.kozirfm.utils.extensions.emptyString
 
 @Composable
-@ExperimentalMaterialApi
 @Suppress("UNCHECKED_CAST")
 fun NewsScreen(viewModel: NewsViewModel, imageLoader: ImageLoader?) {
-    val uiState = viewModel.getData().collectAsState()
-    when (val state = uiState.value) {
+    val uiState by remember { viewModel.getData() }.collectAsState()
+    when (uiState) {
         is UiLoading -> NewsShimmer()
-        is UiSuccess<*> -> NewsModalBottomSheet(
-            news = state.data as List<InNews>,
-            imageLoader
-        )
-        is UiError -> ErrorScreen(state.message)
+        is UiSuccess<*> -> {
+            NewsList(
+                news = (uiState as UiSuccess<*>).data as List<InNews>,
+                imageLoader = imageLoader
+            ) {
+                viewModel.onItemClick(it.id)
+            }
+        }
+        is UiError -> ErrorScreen((uiState as UiError).message)
+    }
+}
+
+@Composable
+fun NewsList(news: List<InNews>, imageLoader: ImageLoader?, onClick: (InNews) -> Unit) {
+    LazyColumn {
+        items(news) {
+            Item(inNews = it, imageLoader = imageLoader) {
+                onClick(it)
+            }
+        }
     }
 }
 
@@ -99,6 +114,8 @@ fun Item(inNews: InNews, imageLoader: ImageLoader?, onItemClick: () -> Unit) {
             }
             Text(
                 modifier = Modifier.padding(8.dp, 8.dp, 8.dp, 0.dp),
+                maxLines = 3,
+                overflow = TextOverflow.Ellipsis,
                 fontSize = 16.sp,
                 text = inNews.title
             )

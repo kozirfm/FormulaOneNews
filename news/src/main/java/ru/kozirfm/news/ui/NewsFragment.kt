@@ -3,13 +3,12 @@ package ru.kozirfm.news.ui
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.widget.FrameLayout
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.redmadrobot.extensions.lifecycle.observe
-import ru.kozirfm.base.BaseFragment
+import ru.kozirfm.core.base.BaseFragment
 import ru.kozirfm.image_loader_api.ImageLoader
 import ru.kozirfm.news.R
 import ru.kozirfm.news.di.NewsFeature
@@ -34,12 +33,15 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val composeView = ComposeView(context = context ?: return)
-        view.findViewById<FrameLayout>(R.id.newsContainer).addView(composeView)
+        val composeView = view.findViewById<ComposeView>(R.id.newsComposeView)
         observe(viewModel.events, this::handleEvent)
         composeView.setContent {
-            NewsScreen(viewModel = viewModel, imageLoader = imageLoader)
+            NewsScreen(
+                viewModel = viewModel,
+                imageLoader = imageLoader
+            )
         }
     }
+
 }
 

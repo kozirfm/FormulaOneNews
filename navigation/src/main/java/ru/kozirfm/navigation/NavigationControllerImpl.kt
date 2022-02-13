@@ -1,97 +1,105 @@
 package ru.kozirfm.navigation
 
-import android.app.Activity
-import androidx.annotation.IdRes
+import android.net.Uri
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.redmadrobot.extensions.lifecycle.observe
+import ru.kozirfm.calendar.di.CalendarFeature.Companion.CALENDAR_SCREEN
+import ru.kozirfm.championship.ChampionshipFeature.Companion.CHAMPIONSHIP_SCREEN
+import ru.kozirfm.core.base.ScreenFeature
+import ru.kozirfm.login.di.LoginFeature.Companion.LOGIN_SCREEN
 import ru.kozirfm.navigation_api.NavigationController
 import ru.kozirfm.navigation_api.NavigationEvent
-import ru.kozirfm.navigation_api.setupWithNavController
-import ru.kozirfm.utils.extensions.visible
+import ru.kozirfm.news.di.NewsFeature.Companion.NEWS_SCREEN
+import ru.kozirfm.utils.extensions.toLowerCase
+import javax.inject.Inject
 
-class NavigationControllerImpl : NavigationController {
+class NavigationControllerImpl
+@Inject constructor(
+    private val screens: Set<@JvmSuppressWildcards ScreenFeature>
+) : NavigationController {
+
+    init {
+        initBaseScreen()
+    }
+
+    private var rootNavController: NavController? = null
 
     override fun setupBottomNavigationBar(
-        activity: Activity,
         fragment: Fragment,
-        toolbar: Toolbar,
-        childFragmentManager: FragmentManager,
-        bottomNavigationView: BottomNavigationView
+        bottomNavigationView: BottomNavigationView?
     ) {
-        val navController = bottomNavigationView.setupWithNavController(
-            fragmentManager = childFragmentManager,
-            containerId = R.id.main_fragment_container,
-            intent = activity.intent,
-            navGraphIds = listOf(
-                R.navigation.menu_news_nav_graph,
-                R.navigation.menu_championship_nav_graph,
-                R.navigation.menu_calendar_nav_graph,
-                R.navigation.menu_profile_nav_graph
+        val navController = fragment.findNavigationController()
+        bottomNavigationView?.setupWithNavController(navController)
+    }
+
+    override fun setupToolbar(fragment: Fragment, toolbar: Toolbar?) {
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.newsFragment,
+                R.id.calendarFragment,
+                R.id.championshipFragment,
+                R.id.loginFragment
             )
         )
-        fragment.observe(navController) { controller ->
-            toolbar.setupWithNavController(controller)
-            controller.addOnDestinationChangedListener { _, destination, _ ->
-                bottomNavigationView.visible = when (destination.id) {
-                    R.id.newsFragment -> true
-                    else -> true
-                }
-            }
-        }
+        val navController = fragment.findNavigationController()
+        toolbar?.setupWithNavController(navController, appBarConfiguration)
+    }
+
+    override fun setRootNavController(activityNavController: NavController) {
+        this.rootNavController = activityNavController
     }
 
     override fun handleNavigationEvent(
-        activity: Activity,
         fragment: Fragment,
         event: NavigationEvent
     ) {
         when (event) {
-            is NavigationEvent.ToDirection -> {
+            is NavigationEvent.ToUri -> {
+                screens.singleOrNull { it.getScreenName() == event.screen }?.getApi()
+                val deeplinkArguments = event.arguments?.joinToString(prefix = "/", separator = "/")
+                val uri =
+                    Uri.parse("$DEEPLINK_PREFIX${event.screen.toLowerCase()}$deeplinkArguments")
                 getNavController(
-                    event.rootGraph,
-                    R.id.main_activity_container,
-                    activity,
-                    fragment
-                ).navigate(event.direction)
+                    fragment,
+                    event.isRoot
+                )?.navigate(uri)
             }
-            is NavigationEvent.ToRes -> {
-                getNavController(
-                    event.rootGraph,
-                    R.id.main_activity_container,
-                    activity,
-                    fragment
-                ).navigate(
-                    event.resId,
-                    event.args
-                )
-            }
-            is NavigationEvent.Up -> fragment.findNavController().navigateUp()
-            is NavigationEvent.Back -> if (!fragment.findNavController().popBackStack()) activity.finish()
-            is NavigationEvent.BackTo -> fragment.findNavController().popBackStack(
-                event.destinationId,
-                event.inclusive
-            )
         }
     }
 
-    private fun getNavController(
-        rootGraph: Boolean = false,
-        @IdRes layoutRes: Int,
-        activity: Activity,
-        fragment: Fragment
-    ): NavController {
-        return if (rootGraph) {
-            activity.findNavController(layoutRes)
-        } else {
-            fragment.findNavController()
+    private fun initBaseScreen() {
+        val baseScreen = listOf(
+            NEWS_SCREEN,
+            LOGIN_SCREEN,
+            CALENDAR_SCREEN,
+            CHAMPIONSHIP_SCREEN
+        )
+        screens.filter { baseScreen.contains(it.getScreenName()) }.forEach { it.getApi() }
+    }
+
+    private fun Fragment.findNavigationController(): NavController {
+        val navHostFragment = this
+            .childFragmentManager
+            .findFragmentById(R.id.main_fragment_container) as NavHostFragment
+        return navHostFragment.navController.apply {
+            graph = navInflater.inflate(R.navigation.root_nav_graph).apply {
+                setStartDestination(R.id.menu_news_nav_graph)
+            }
         }
+    }
+
+    private fun getNavController(fragment: Fragment, isRoot: Boolean): NavController? {
+        return if (isRoot) rootNavController else fragment.findNavController()
+    }
+
+    private companion object {
+        const val DEEPLINK_PREFIX = "app://"
     }
 
 }

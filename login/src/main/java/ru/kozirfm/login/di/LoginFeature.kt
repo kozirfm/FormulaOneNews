@@ -1,10 +1,11 @@
 package ru.kozirfm.login.di
 
-import ru.kozirfm.core_api.di.annotation.AppScope
+import ru.kozirfm.core.annotation.AppScope
+import ru.kozirfm.core.base.ScreenFeature
 import javax.inject.Inject
 
 @AppScope
-class LoginFeature @Inject constructor(dependencies: LoginDependencies) {
+class LoginFeature @Inject constructor(dependencies: LoginDependencies) : ScreenFeature {
 
     private val _api: LoginFeatureApi by lazy {
         DaggerLoginComponent.builder()
@@ -13,9 +14,11 @@ class LoginFeature @Inject constructor(dependencies: LoginDependencies) {
             .also { loginComponent = it }
     }
 
-    fun getApi() = _api
+    override fun getApi() = _api
+    override fun getScreenName(): String = LOGIN_SCREEN
 
-    internal companion object {
+    companion object {
+        const val LOGIN_SCREEN = "LoginScreen"
         var loginComponent: LoginComponent? = null
     }
 }

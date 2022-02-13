@@ -5,9 +5,11 @@ import javax.inject.Inject
 
 class ImageLoaderFeature @Inject constructor() {
 
-    private val _api: ImageLoaderFeatureApi = DaggerImageLoaderComponent
-        .create()
-        .also { imageLoaderComponent = it }
+    private val _api: ImageLoaderFeatureApi by lazy {
+        DaggerImageLoaderComponent
+            .create()
+            .also { imageLoaderComponent = it }
+    }
 
     fun getApi() = _api
 

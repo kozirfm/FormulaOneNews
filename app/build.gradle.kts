@@ -58,6 +58,7 @@ dependencies {
     implementation(Dependencies.Common.appcompat)
     implementation(Dependencies.Common.material)
     implementation(Dependencies.Common.constraint)
+    implementation(Dependencies.Common.splash)
 
     //Dagger 2
     implementation(Dependencies.Dagger.core)
@@ -74,9 +75,7 @@ dependencies {
     implementation(Dependencies.Compose.material)
 
     //Modules
-    implementation(project(Modules.base))
     implementation(project(Modules.core))
-    implementation(project(Modules.coreApi))
     implementation(project(Modules.utils))
     implementation(project(Modules.designSystem))
     implementation(project(Modules.navigation))
@@ -95,4 +94,6 @@ dependencies {
     implementation(project(Features.news))
     implementation(project(Features.calendar))
     implementation(project(Features.championship))
+    implementation(project(Features.newsDetail))
+    implementation(project(Features.newsApi))
 }

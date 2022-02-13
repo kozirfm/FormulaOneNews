@@ -25,8 +25,7 @@ dependencies {
 
     implementation(Dependencies.Preference.core)
 
-    implementation(project(Modules.base))
-    implementation(project(Modules.coreApi))
+    implementation(project(Modules.core))
     implementation(project(Modules.persistentStorageApi))
     implementation(project(Modules.designSystem))
     implementation(project(Modules.utils))

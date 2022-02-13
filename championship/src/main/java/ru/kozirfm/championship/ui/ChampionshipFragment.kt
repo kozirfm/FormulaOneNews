@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import ru.kozirfm.base.BaseFragment
+import ru.kozirfm.core.base.BaseFragment
 import ru.kozirfm.championship.R
 import ru.kozirfm.championship.entity.InDriver
 

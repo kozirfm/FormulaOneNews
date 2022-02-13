@@ -4,10 +4,15 @@ import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import ru.kozirfm.firebase.Constants.FIREBASE_TOKEN
+import ru.kozirfm.firebase.di.FirebaseFeature
 import ru.kozirfm.persistent_storage_api.PersistentStorage
 import javax.inject.Inject
 
-class FirebaseService @Inject constructor() : FirebaseMessagingService() {
+class FirebaseService : FirebaseMessagingService() {
+
+    init {
+        FirebaseFeature.firebaseComponent?.inject(this)
+    }
 
     @set:Inject
     var persistentStorage: PersistentStorage? = null

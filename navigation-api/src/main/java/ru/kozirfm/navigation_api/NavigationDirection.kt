@@ -1,5 +1,8 @@
 package ru.kozirfm.navigation_api
 
-import androidx.navigation.NavDirections
+import android.os.Bundle
 
-interface NavigationDirection : NavDirections
+interface NavigationDirection {
+    fun getActionIds(): Int
+    fun getArguments(): Bundle
+}

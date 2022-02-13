@@ -1,26 +1,22 @@
 package ru.kozirfm.di
 
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import ru.kozirfm.core_api.di.annotation.AppScope
-import ru.kozirfm.navigation.NavigateRootDirectionImpl
+import ru.kozirfm.core.annotation.AppScope
 import ru.kozirfm.navigation.NavigationControllerImpl
-import ru.kozirfm.navigation_api.NavigateRootDirection
+import ru.kozirfm.navigation.NavigatorImpl
 import ru.kozirfm.navigation_api.NavigationController
+import ru.kozirfm.navigation_api.Navigator
 
 @Module
-class NavigationModule {
+interface NavigationModule {
 
     @AppScope
-    @Provides
-    fun provideNavigation(): NavigationController {
-        return NavigationControllerImpl()
-    }
+    @Binds
+    fun provideNavigation(impl: NavigationControllerImpl): NavigationController
 
     @AppScope
-    @Provides
-    fun provideRootDirections(): NavigateRootDirection {
-        return NavigateRootDirectionImpl()
-    }
+    @Binds
+    fun provideRootDirections(impl: NavigatorImpl): Navigator
 
 }

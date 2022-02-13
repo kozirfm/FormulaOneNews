@@ -20,4 +20,5 @@ dependencies {
     implementation(Dependencies.Common.core)
     implementation(Dependencies.Common.appcompat)
     implementation(Dependencies.Common.material)
+    implementation(Dependencies.Common.splash)
 }

@@ -1,8 +1,8 @@
 package ru.kozirfm.formulaonenews.di.features
 
 import dagger.Component
-import ru.kozirfm.core_api.di.CoreFeatureApi
+import ru.kozirfm.core.di.BaseDependencies
 import ru.kozirfm.persistent_storage.di.PersistentStorageDependencies
 
-@Component(dependencies = [CoreFeatureApi::class])
+@Component(dependencies = [BaseDependencies::class])
 interface PersistentStorageExportComponent : PersistentStorageDependencies

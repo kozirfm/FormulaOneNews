@@ -1,8 +1,6 @@
 object Modules {
 
-    val base = module("base")
     val core = module("core")
-    val coreApi = module("core-api")
     val network = module("network")
     val networkApi = module("network-api")
     val navigation = module("navigation")

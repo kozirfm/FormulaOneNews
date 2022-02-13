@@ -13,7 +13,7 @@ pluginManagement {
                 useModule("com.android.tools.build:gradle:7.0.2")
             }
             if (requested.id.id.startsWith("androidx.navigation")) {
-                useModule("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5")
+                useModule("androidx.navigation:navigation-safe-args-gradle-plugin:2.4.0")
             }
             if (requested.id.id.startsWith("com.google.gms")) {
                 useModule("com.google.gms:google-services:4.3.10")
@@ -31,11 +31,11 @@ buildCache {
 
 rootProject.name = "Formula One News"
 include(":app")
+include(":core")
 include(":news")
 include(":network")
 include(":utils")
 include(":navigation")
-include(":core")
 include(":design-system")
 include(":navigation-api")
 include(":network-api")
@@ -45,8 +45,8 @@ include(":login")
 include(":image-loader")
 include(":firebase")
 include(":firebase-api")
-include(":core-api")
 include(":image-loader-api")
-include(":base")
 include(":persistent-storage")
 include(":persistent-storage-api")
+include(":news-detail")
+include(":news-api")

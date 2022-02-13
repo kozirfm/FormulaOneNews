@@ -6,9 +6,9 @@ import android.view.View
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.viewModels
 import com.redmadrobot.extensions.lifecycle.observe
-import ru.kozirfm.base.BaseFragment
+import ru.kozirfm.core.base.BaseFragment
+import ru.kozirfm.core.viewmodel.ViewModelFactory
 import ru.kozirfm.login.di.LoginFeature
-import ru.kozirfm.viewmodel.ViewModelFactory
 import javax.inject.Inject
 
 class LoginFragment : BaseFragment(useComposeView = true) {

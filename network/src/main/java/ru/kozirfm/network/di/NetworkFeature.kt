@@ -5,11 +5,13 @@ import javax.inject.Inject
 
 class NetworkFeature @Inject constructor() {
 
-    private val _api: NetworkFeatureApi = DaggerNetworkComponent
-        .create()
-        .also {
-            networkComponent = it
-        }
+    private val _api: NetworkFeatureApi by lazy {
+        DaggerNetworkComponent
+            .create()
+            .also {
+                networkComponent = it
+            }
+    }
 
     fun getApi() = _api
 

@@ -1,18 +1,13 @@
 package ru.kozirfm.core.di
 
-import android.content.Context
-import dagger.BindsInstance
 import dagger.Component
-import ru.kozirfm.core_api.di.CoreFeatureApi
-import ru.kozirfm.core_api.di.annotation.AppScope
+import ru.kozirfm.core.annotation.AppScope
+import ru.kozirfm.core.base.BaseActivity
+import ru.kozirfm.core.base.BaseFragment
 
 @AppScope
-@Component(modules = [CoreModule::class])
-interface CoreComponent : CoreFeatureApi {
-    @Component.Builder
-    interface Builder {
-        @BindsInstance
-        fun context(context: Context): Builder
-        fun build(): CoreComponent
-    }
+@Component (dependencies = [CoreDependencies::class])
+interface CoreComponent: CoreFeatureApi {
+    fun inject(activity: BaseActivity)
+    fun inject(fragment: BaseFragment)
 }

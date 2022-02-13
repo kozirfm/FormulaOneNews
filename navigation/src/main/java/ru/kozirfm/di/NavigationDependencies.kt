@@ -1,3 +1,5 @@
 package ru.kozirfm.di
 
-interface NavigationDependencies
+import ru.kozirfm.core.di.BaseDependencies
+
+interface NavigationDependencies : BaseDependencies

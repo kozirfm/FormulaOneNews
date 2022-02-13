@@ -11,20 +11,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FormulaOneNews"
+        android:theme="@style/Theme.FormulaOneNews.Splash"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <nav-graph android:value="@navigation/root_nav_graph" />
         </activity>
-        <activity
-            android:name=".activity.MainActivity"
-            android:exported="false" />
-
         <service
             android:name="ru.kozirfm.firebase.FirebaseService"
             android:exported="false">

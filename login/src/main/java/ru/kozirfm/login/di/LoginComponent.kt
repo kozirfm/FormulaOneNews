@@ -1,7 +1,7 @@
 package ru.kozirfm.login.di
 
 import dagger.Component
-import ru.kozirfm.core_api.di.annotation.PerFeature
+import ru.kozirfm.core.annotation.PerFeature
 import ru.kozirfm.login.ui.LoginFragment
 
 @PerFeature

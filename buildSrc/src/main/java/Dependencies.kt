@@ -6,18 +6,19 @@ object Dependencies {
         const val material = "com.google.android.material:material:1.4.0"
         const val activity = "androidx.activity:activity-ktx:1.3.1"
         const val activityCompose = "androidx.activity:activity-compose:1.3.1"
-        const val fragment = "androidx.fragment:fragment-ktx:1.3.6"
+        const val fragment = "androidx.fragment:fragment-ktx:1.4.1"
         const val constraint = "androidx.constraintlayout:constraintlayout:2.1.1"
+        const val splash = "androidx.core:core-splashscreen:1.0.0-beta01"
     }
 
     object Dagger {
-        private const val version = "2.38.1"
+        private const val version = "2.40.5"
         const val core = "com.google.dagger:dagger:$version"
         const val compiler = "com.google.dagger:dagger-compiler:$version"
     }
 
     object Navigation {
-        private const val version = "2.3.5"
+        private const val version = "2.4.0"
         const val ui = "androidx.navigation:navigation-ui-ktx:$version"
         const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
     }

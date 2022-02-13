@@ -1,8 +1,8 @@
 package ru.kozirfm.news.repository
 
 import ru.kozirfm.network_api.utils.ResponseState
-import ru.kozirfm.news.datasourse.NewsLocalDataSource
-import ru.kozirfm.news.datasourse.NewsRemoteDataSource
+import ru.kozirfm.news.datasource.NewsLocalDataSource
+import ru.kozirfm.news.datasource.NewsRemoteDataSource
 import javax.inject.Inject
 
 class NewsRepositoryImpl

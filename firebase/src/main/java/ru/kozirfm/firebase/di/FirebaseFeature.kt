@@ -1,6 +1,6 @@
 package ru.kozirfm.firebase.di
 
-import ru.kozirfm.core_api.di.annotation.AppScope
+import ru.kozirfm.core.annotation.AppScope
 import ru.kozirfm.firebase_api.di.FirebaseFeatureApi
 import javax.inject.Inject
 

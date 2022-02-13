@@ -2,11 +2,13 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/menu_profile_nav_graph"
-    app:startDestination="@id/fragment_login">
+    app:startDestination="@id/loginFragment">
 
     <fragment
-        android:id="@+id/fragment_login"
+        android:id="@+id/loginFragment"
         android:name="ru.kozirfm.login.ui.LoginFragment"
-        android:label="LoginFragment" />
+        android:label="@string/profile">
+        <deepLink app:uri="app://login" />
+    </fragment>
 
 </navigation>

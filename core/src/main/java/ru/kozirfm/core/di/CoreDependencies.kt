@@ -1,3 +1,5 @@
 package ru.kozirfm.core.di
 
-interface CoreDependencies
+import ru.kozirfm.navigation_api.di.NavigationFeatureApi
+
+interface CoreDependencies : NavigationFeatureApi

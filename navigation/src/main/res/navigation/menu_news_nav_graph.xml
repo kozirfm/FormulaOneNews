@@ -7,6 +7,15 @@
     <fragment
         android:id="@+id/newsFragment"
         android:name="ru.kozirfm.news.ui.NewsFragment"
-        android:label="@string/news" />
+        android:label="@string/news">
+        <deepLink app:uri="ru.kozirfm://myapp/news_screen" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="ru.kozirfm.news_detail.ui.NewsDetailFragment"
+        android:label="">
+        <deepLink app:uri="app://news_detail_screen/{id}" />
+    </fragment>
 
 </navigation>

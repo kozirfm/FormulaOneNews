@@ -36,7 +36,6 @@ dependencies {
     implementation(Dependencies.Coil.core)
     implementation(Dependencies.Coil.compose)
     //Modules
-    implementation(project(Modules.base))
-    implementation(project(Modules.coreApi))
+    implementation(project(Modules.core))
     implementation(project(Modules.imageLoaderApi))
 }

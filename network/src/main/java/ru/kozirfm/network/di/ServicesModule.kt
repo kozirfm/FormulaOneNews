@@ -1,22 +1,22 @@
 package ru.kozirfm.network.di
 
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import ru.kozirfm.network.retrofit.RetrofitService
 import ru.kozirfm.network_api.services.LoginRemoteService
+import ru.kozirfm.network_api.services.NewsDetailRemoteService
 import ru.kozirfm.network_api.services.NewsRemoteService
 
 @Module
-class ServicesModule {
+interface ServicesModule {
 
-    @Provides
-    fun provideNewsRemoteService(retrofitService: RetrofitService): NewsRemoteService {
-        return retrofitService
-    }
+    @Binds
+    fun provideNewsRemoteService(retrofitService: RetrofitService): NewsRemoteService
 
-    @Provides
-    fun provideLoginRemoteService(retrofitService: RetrofitService): LoginRemoteService{
-        return retrofitService
-    }
+    @Binds
+    fun provideLoginRemoteService(retrofitService: RetrofitService): LoginRemoteService
+
+    @Binds
+    fun provideNewsDetailRemoteService(retrofitService: RetrofitService): NewsDetailRemoteService
 
 }

@@ -4,6 +4,8 @@ object Features {
     val news = module("news")
     val calendar = module("calendar")
     val championship = module("championship")
+    val newsDetail = module("news-detail")
+    val newsApi = module("news-api")
 
     private fun module(module: String): Map<String, String> {
         return mapOf("path" to ":$module")

@@ -3,23 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root_nav_graph"
-    app:startDestination="@id/fragment_main">
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="ru.kozirfm.core.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+
+        <deepLink app:uri="ru.kozirfm://myapp/main_fragment" />
+
+    </fragment>
 
     <include app:graph="@navigation/menu_news_nav_graph" />
     <include app:graph="@navigation/menu_championship_nav_graph" />
     <include app:graph="@navigation/menu_calendar_nav_graph" />
     <include app:graph="@navigation/menu_profile_nav_graph" />
-
-    <fragment
-        android:id="@+id/fragment_main"
-        android:name="ru.kozirfm.main.MainFragment"
-        android:label="MainFragment"
-        tools:layout="@layout/fragment_main" />
-
-    <action
-        android:id="@+id/toMainFragment"
-        app:destination="@id/fragment_main"
-        app:popUpTo="@id/root_nav_graph"
-        app:popUpToInclusive="true"/>
 
 </navigation>

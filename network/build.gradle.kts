@@ -37,7 +37,7 @@ dependencies {
 
     implementation(Dependencies.Serialization.core)
 
-    implementation(project(Modules.coreApi))
+    implementation(project(Modules.core))
     implementation(project(Modules.networkApi))
     implementation(project(Modules.utils))
 

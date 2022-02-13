@@ -12,12 +12,10 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/base" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/calendar" />
             <option value="$PROJECT_DIR$/championship" />
             <option value="$PROJECT_DIR$/core" />
-            <option value="$PROJECT_DIR$/core-api" />
             <option value="$PROJECT_DIR$/design-system" />
             <option value="$PROJECT_DIR$/firebase" />
             <option value="$PROJECT_DIR$/firebase-api" />
@@ -29,6 +27,8 @@
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/network-api" />
             <option value="$PROJECT_DIR$/news" />
+            <option value="$PROJECT_DIR$/news-api" />
+            <option value="$PROJECT_DIR$/news-detail" />
             <option value="$PROJECT_DIR$/persistent-storage" />
             <option value="$PROJECT_DIR$/persistent-storage-api" />
             <option value="$PROJECT_DIR$/utils" />

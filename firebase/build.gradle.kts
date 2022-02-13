@@ -33,8 +33,7 @@ dependencies {
     implementation(Dependencies.Coroutines.core)
 
     //Modules
-    implementation(project(Modules.base))
-    implementation(project(Modules.coreApi))
+    implementation(project(Modules.core))
     implementation(project(Modules.utils))
     implementation(project(Modules.firebaseApi))
     implementation(project(Modules.persistentStorageApi))

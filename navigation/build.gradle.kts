@@ -34,8 +34,7 @@ dependencies {
     implementation(Dependencies.RedMadRobot.extensions)
 
     //Modules
-    implementation(project(Modules.base))
-    implementation(project(Modules.coreApi))
+    implementation(project(Modules.core))
     implementation(project(Modules.navigationApi))
     implementation(project(Modules.utils))
 
@@ -44,4 +43,5 @@ dependencies {
     implementation(project(Features.news))
     implementation(project(Features.calendar))
     implementation(project(Features.championship))
+    implementation(project(Features.newsDetail))
 }

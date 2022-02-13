@@ -4,11 +4,14 @@ import android.content.Context
 import androidx.compose.material.ExperimentalMaterialApi
 import dagger.Module
 import dagger.Provides
+import ru.kozirfm.core.annotation.AppScope
+import ru.kozirfm.core.base.ScreenFeature
+import ru.kozirfm.core.di.BaseDependencies
 import ru.kozirfm.core.di.CoreDependencies
 import ru.kozirfm.core.di.CoreFeature
-import ru.kozirfm.core_api.di.CoreFeatureApi
-import ru.kozirfm.core_api.di.annotation.AppScope
-import ru.kozirfm.di.*
+import ru.kozirfm.core.di.CoreFeatureApi
+import ru.kozirfm.di.NavigationDependencies
+import ru.kozirfm.di.NavigationFeature
 import ru.kozirfm.firebase.di.FirebaseDependencies
 import ru.kozirfm.firebase.di.FirebaseFeature
 import ru.kozirfm.firebase_api.di.FirebaseFeatureApi
@@ -26,30 +29,27 @@ import ru.kozirfm.network_api.di.NetworkFeatureApi
 import ru.kozirfm.news.di.NewsDependencies
 import ru.kozirfm.news.di.NewsFeature
 import ru.kozirfm.news.di.NewsFeatureApi
+import ru.kozirfm.news_detail.di.NewsDetailDependencies
+import ru.kozirfm.news_detail.di.NewsDetailFeature
+import ru.kozirfm.news_detail.di.NewsDetailFeatureApi
 import ru.kozirfm.persistent_storage.di.PersistentStorageDependencies
 import ru.kozirfm.persistent_storage.di.PersistentStorageFeature
 import ru.kozirfm.persistent_storage_api.di.PersistentStorageFeatureApi
+import javax.inject.Provider
 
-@Module
+@Module(includes = [FeaturesModule::class])
 @ExperimentalMaterialApi
 class ApplicationModule(private val applicationContext: Context) {
 
     @Provides
     @AppScope
-    fun provideContext(): Context = applicationContext
-
-    @Provides
-    @AppScope
-    fun provideBaseFeatureApi(feature: BaseFeature): BaseFeatureApi {
-        return feature.getApi()
-    }
-
-    @Provides
-    @AppScope
-    fun provideBaseFeatureDependencies(navigationFeatureApi: NavigationFeatureApi): BaseDependencies {
-        return DaggerBaseExportComponent.builder()
-            .navigationFeatureApi(navigationFeatureApi)
-            .build()
+    fun provideBaseDependencies(
+        screens: Provider<Set<@JvmSuppressWildcards ScreenFeature>>,
+    ): BaseDependencies {
+        return object : BaseDependencies {
+            override fun getContext(): Context = applicationContext
+            override fun getScreens(): Set<ScreenFeature> = screens.get()
+        }
     }
 
     @Provides
@@ -60,8 +60,12 @@ class ApplicationModule(private val applicationContext: Context) {
 
     @Provides
     @AppScope
-    fun provideCoreFeatureDependencies(): CoreDependencies {
-        return DaggerCoreExportComponent.create()
+    fun provideCoreFeatureDependencies(
+        navigationFeatureApi: NavigationFeatureApi
+    ): CoreDependencies {
+        return DaggerCoreExportComponent.builder()
+            .navigationFeatureApi(navigationFeatureApi)
+            .build()
     }
 
     @Provides
@@ -84,8 +88,12 @@ class ApplicationModule(private val applicationContext: Context) {
 
     @Provides
     @AppScope
-    fun providesNavigationDependencies(): NavigationDependencies {
-        return DaggerNavigationExportComponent.create()
+    fun providesNavigationDependencies(
+        baseDependencies: BaseDependencies
+    ): NavigationDependencies {
+        return DaggerNavigationExportComponent.builder()
+            .baseDependencies(baseDependencies)
+            .build()
     }
 
     @Provides
@@ -98,12 +106,6 @@ class ApplicationModule(private val applicationContext: Context) {
     @AppScope
     fun providesImageLoaderDependencies(): ImageLoaderDependencies {
         return DaggerImageLoaderExportComponent.create()
-    }
-
-    @Provides
-    @AppScope
-    fun providesNewsFeatureApi(feature: NewsFeature): NewsFeatureApi {
-        return feature.getApi()
     }
 
     @Provides
@@ -131,11 +133,17 @@ class ApplicationModule(private val applicationContext: Context) {
     @Provides
     @AppScope
     fun providePersistentStorageDependencies(
-        coreFeatureApi: CoreFeatureApi
+        baseDependencies: BaseDependencies
     ): PersistentStorageDependencies {
         return DaggerPersistentStorageExportComponent.builder()
-            .coreFeatureApi(coreFeatureApi)
+            .baseDependencies(baseDependencies)
             .build()
+    }
+
+    @Provides
+    @AppScope
+    fun providesNewsFeatureApi(feature: NewsFeature): NewsFeatureApi {
+        return feature.getApi()
     }
 
     @Provides
@@ -169,6 +177,26 @@ class ApplicationModule(private val applicationContext: Context) {
             .networkFeatureApi(networkFeatureApi)
             .navigationFeatureApi(navigationFeatureApi)
             .firebaseFeatureApi(firebaseFeatureApi)
+            .build()
+    }
+
+    @Provides
+    @AppScope
+    fun provideNewsDetailFeatureApi(feature: NewsDetailFeature): NewsDetailFeatureApi {
+        return feature.getApi()
+    }
+
+    @Provides
+    @AppScope
+    fun provideNewsDetailDependencies(
+        networkFeatureApi: NetworkFeatureApi,
+        navigationFeatureApi: NavigationFeatureApi,
+        imageLoaderFeatureApi: ImageLoaderFeatureApi
+    ): NewsDetailDependencies {
+        return DaggerNewsDetailExportComponent.builder()
+            .networkFeatureApi(networkFeatureApi)
+            .navigationFeatureApi(navigationFeatureApi)
+            .imageLoaderFeatureApi(imageLoaderFeatureApi)
             .build()
     }
 }

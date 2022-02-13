@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import ru.kozirfm.login.entity.Login
+import ru.kozirfm.login.entity.User
 import ru.kozirfm.utils.extensions.emptyString
 
 @Composable
@@ -41,7 +41,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
             modifier = Modifier.padding(top = 8.dp),
             onClick = {
                 viewModel.signIn(
-                    Login(
+                    User(
                         username = username,
                         password = password
                     )
@@ -52,7 +52,7 @@ fun LoginScreen(viewModel: LoginViewModel) {
             modifier = Modifier.padding(vertical = 8.dp),
             onClick = {
                 viewModel.signUp(
-                    Login(
+                    User(
                         username = username,
                         password = password
                     )

@@ -1,3 +1,5 @@
 package ru.kozirfm.news.di
 
-interface NewsFeatureApi
+import ru.kozirfm.core.base.ScreenCreator
+
+interface NewsFeatureApi : ScreenCreator

@@ -1,3 +1,5 @@
 package ru.kozirfm.login.di
 
-interface LoginFeatureApi
+import ru.kozirfm.core.base.ScreenCreator
+
+interface LoginFeatureApi: ScreenCreator
