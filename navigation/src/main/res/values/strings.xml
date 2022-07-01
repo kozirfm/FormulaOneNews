@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="screen_news">ru.kozirfm://myapp/news</string>
+    <string name="screen_news_detail">app://news_detail/{id}</string>
 
 </resources>

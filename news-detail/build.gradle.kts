@@ -18,7 +18,6 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = Config.composeVersion
-        kotlinCompilerVersion = Config.kotlinVersion
     }
 
 }
@@ -67,6 +66,7 @@ dependencies {
     implementation(project(Modules.networkApi))
     implementation(project(Modules.navigationApi))
     implementation(project(Modules.imageLoaderApi))
+    implementation(project(Modules.designSystem))
 
     implementation(project(Features.newsApi))
 

@@ -29,6 +29,7 @@ dependencies {
     kapt(Dependencies.Dagger.compiler)
 
     //Navigation
+    implementation(Dependencies.Navigation.runtime)
     implementation(Dependencies.Navigation.ui)
     implementation(Dependencies.Navigation.fragment)
     implementation(Dependencies.RedMadRobot.extensions)

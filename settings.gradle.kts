@@ -7,13 +7,13 @@ pluginManagement {
     resolutionStrategy {
         eachPlugin {
             if (requested.id.id.startsWith("org.jetbrains.kotlin")) {
-                useVersion("1.5.30")
+                useVersion("1.6.10")
             }
             if (requested.id.id.startsWith("com.android")) {
-                useModule("com.android.tools.build:gradle:7.0.2")
+                useModule("com.android.tools.build:gradle:7.2.1")
             }
             if (requested.id.id.startsWith("androidx.navigation")) {
-                useModule("androidx.navigation:navigation-safe-args-gradle-plugin:2.4.0")
+                useModule("androidx.navigation:navigation-safe-args-gradle-plugin:2.4.2")
             }
             if (requested.id.id.startsWith("com.google.gms")) {
                 useModule("com.google.gms:google-services:4.3.10")
@@ -50,3 +50,4 @@ include(":persistent-storage")
 include(":persistent-storage-api")
 include(":news-detail")
 include(":news-api")
+include(":calendar-api")

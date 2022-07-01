@@ -21,7 +21,7 @@ class NetworkModule {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): RetrofitService {
         return Retrofit.Builder()
-            .baseUrl(PROD_URL)
+            .baseUrl(STAGE_URL)
             .client(okHttpClient)
             .addConverterFactory(ScalarsConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
@@ -53,7 +53,7 @@ class NetworkModule {
 
     private companion object {
         const val PROD_URL = "http://95.52.246.252"
-        const val STAGE_URL = "http://192.168.31.235:5555"
+        const val STAGE_URL = "http://95.52.246.252:6060"
         const val LOCAL_URL = "http://192.168.31.230:5050"
     }
 }

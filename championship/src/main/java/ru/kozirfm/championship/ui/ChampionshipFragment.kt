@@ -7,16 +7,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import ru.kozirfm.core.base.BaseFragment
-import ru.kozirfm.championship.R
 import ru.kozirfm.championship.entity.InDriver
+import ru.kozirfm.core.base.BaseFragment
+import ru.kozirfm.core.R as RCore
 
-class ChampionshipFragment : BaseFragment(useComposeView = true){
+class ChampionshipFragment : BaseFragment(useComposeView = true) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (view as ComposeView).setContent {
-            Text(text = stringResource(id = R.string.championship))
+            Text(text = stringResource(id = RCore.string.championship))
             Championship(drivers = emptyList())
         }
     }

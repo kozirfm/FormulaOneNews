@@ -6,7 +6,7 @@ import ru.kozirfm.core.screens.Screen
 import javax.inject.Inject
 
 @AppScope
-class NewsDetailFeature @Inject constructor(dependencies: NewsDetailDependencies) : ScreenFeature {
+class NewsDetailFeature @Inject constructor(dependencies: NewsDetailDependencies) : ScreenFeature<NewsDetailFeatureApi> {
 
     private val _api: NewsDetailFeatureApi by lazy {
         DaggerNewsDetailComponent.builder()
@@ -17,7 +17,7 @@ class NewsDetailFeature @Inject constructor(dependencies: NewsDetailDependencies
 
     override fun getApi() = _api
 
-    override fun getScreenName(): String = Screen.NEWS_DETAIL_SCREEN.name
+    override fun getScreenName(): String = Screen.NEWS_DETAIL.name
 
     internal companion object {
         var newsDetailComponent: NewsDetailComponent? = null

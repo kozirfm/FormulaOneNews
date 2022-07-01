@@ -5,7 +5,7 @@ import ru.kozirfm.core.base.ScreenFeature
 import javax.inject.Inject
 
 @AppScope
-class LoginFeature @Inject constructor(dependencies: LoginDependencies) : ScreenFeature {
+class LoginFeature @Inject constructor(dependencies: LoginDependencies) : ScreenFeature<LoginFeatureApi> {
 
     private val _api: LoginFeatureApi by lazy {
         DaggerLoginComponent.builder()

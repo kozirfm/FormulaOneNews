@@ -38,7 +38,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = Config.jvmTarget
     }
 
     buildFeatures {
@@ -47,7 +47,6 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = Config.composeVersion
-        kotlinCompilerVersion = Config.kotlinVersion
     }
 
 
@@ -65,6 +64,7 @@ dependencies {
     kapt(Dependencies.Dagger.compiler)
 
     //Navigation
+    implementation(Dependencies.Navigation.runtime)
     implementation(Dependencies.Navigation.ui)
     implementation(Dependencies.Navigation.fragment)
 
@@ -93,6 +93,7 @@ dependencies {
     implementation(project(Features.login))
     implementation(project(Features.news))
     implementation(project(Features.calendar))
+    implementation(project(Features.calendarApi))
     implementation(project(Features.championship))
     implementation(project(Features.newsDetail))
     implementation(project(Features.newsApi))

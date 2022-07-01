@@ -6,5 +6,5 @@ import ru.kozirfm.core.base.ScreenFeature
 
 interface BaseDependencies {
     fun getContext(): Context
-    fun getScreens(): Set<ScreenFeature>
+    fun getScreens(): Set<ScreenFeature<*>>
 }

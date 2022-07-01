@@ -1,9 +1,11 @@
 package ru.kozirfm.formulaonenews.di
 
 import android.content.Context
-import androidx.compose.material.ExperimentalMaterialApi
 import dagger.Module
 import dagger.Provides
+import ru.kozirfm.calendar.di.CalendarDependencies
+import ru.kozirfm.calendar.di.CalendarFeature
+import ru.kozirfm.calendar.di.CalendarFeatureApi
 import ru.kozirfm.core.annotation.AppScope
 import ru.kozirfm.core.base.ScreenFeature
 import ru.kozirfm.core.di.BaseDependencies
@@ -38,17 +40,16 @@ import ru.kozirfm.persistent_storage_api.di.PersistentStorageFeatureApi
 import javax.inject.Provider
 
 @Module(includes = [FeaturesModule::class])
-@ExperimentalMaterialApi
 class ApplicationModule(private val applicationContext: Context) {
 
     @Provides
     @AppScope
     fun provideBaseDependencies(
-        screens: Provider<Set<@JvmSuppressWildcards ScreenFeature>>,
+        screens: Provider<Set<@JvmSuppressWildcards ScreenFeature<*>>>,
     ): BaseDependencies {
         return object : BaseDependencies {
             override fun getContext(): Context = applicationContext
-            override fun getScreens(): Set<ScreenFeature> = screens.get()
+            override fun getScreens(): Set<ScreenFeature<*>> = screens.get()
         }
     }
 
@@ -194,6 +195,26 @@ class ApplicationModule(private val applicationContext: Context) {
         imageLoaderFeatureApi: ImageLoaderFeatureApi
     ): NewsDetailDependencies {
         return DaggerNewsDetailExportComponent.builder()
+            .networkFeatureApi(networkFeatureApi)
+            .navigationFeatureApi(navigationFeatureApi)
+            .imageLoaderFeatureApi(imageLoaderFeatureApi)
+            .build()
+    }
+
+    @Provides
+    @AppScope
+    fun provideCalendarFeatureApi(feature: CalendarFeature): CalendarFeatureApi {
+        return feature.getApi()
+    }
+
+    @Provides
+    @AppScope
+    fun provideCalendarDependencies(
+        networkFeatureApi: NetworkFeatureApi,
+        navigationFeatureApi: NavigationFeatureApi,
+        imageLoaderFeatureApi: ImageLoaderFeatureApi
+    ): CalendarDependencies {
+        return DaggerCalendarExportComponent.builder()
             .networkFeatureApi(networkFeatureApi)
             .navigationFeatureApi(navigationFeatureApi)
             .imageLoaderFeatureApi(imageLoaderFeatureApi)

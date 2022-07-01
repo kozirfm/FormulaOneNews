@@ -3,6 +3,9 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="11">
       <module name="FormulaOneNews.buildSrc" target="11" />
+      <module name="FormulaOneNews.Formula_One_News" target="11" />
+      <module name="FormulaOneNews.Formula_One_News.main" target="11" />
+      <module name="FormulaOneNews.Formula_One_News.test" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

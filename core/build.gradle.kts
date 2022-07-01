@@ -17,7 +17,6 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = Config.composeVersion
-        kotlinCompilerVersion = Config.kotlinVersion
     }
 
 }
@@ -36,6 +35,7 @@ dependencies {
     implementation(Dependencies.Dagger.core)
     kapt(Dependencies.Dagger.compiler)
 
+    implementation(Dependencies.Navigation.runtime)
     implementation(Dependencies.Navigation.ui)
     implementation(Dependencies.Navigation.fragment)
     implementation(Dependencies.RedMadRobot.extensions)

@@ -1,7 +1,7 @@
 object Dependencies {
 
     object Common {
-        const val core = "androidx.core:core-ktx:1.6.0"
+        const val core = "androidx.core:core-ktx:1.8.0"
         const val appcompat = "androidx.appcompat:appcompat:1.3.1"
         const val material = "com.google.android.material:material:1.4.0"
         const val activity = "androidx.activity:activity-ktx:1.3.1"
@@ -18,7 +18,8 @@ object Dependencies {
     }
 
     object Navigation {
-        private const val version = "2.4.0"
+        private const val version = "2.4.2"
+        const val runtime = "androidx.navigation:navigation-runtime-ktx:$version"
         const val ui = "androidx.navigation:navigation-ui-ktx:$version"
         const val fragment = "androidx.navigation:navigation-fragment-ktx:$version"
     }
@@ -61,13 +62,13 @@ object Dependencies {
     }
 
     object Lifecycle {
-        private const val version = "2.4.0-rc01"
+        private const val version = "2.5.0-rc01"
         const val core = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
     }
 
     object Compose {
-        private const val version = "1.0.3"
+        private const val version = "1.1.1"
         const val ui = "androidx.compose.ui:ui:$version"
         const val tooling = "androidx.compose.ui:ui-tooling:$version"
         const val foundation = "androidx.compose.foundation:foundation:$version"
@@ -85,5 +86,10 @@ object Dependencies {
     object Preference {
         private const val version = "1.1.1"
         const val core = "androidx.preference:preference-ktx:$version"
+    }
+
+    object Accompanist {
+        private const val version = "0.23.1"
+        const val swipeRefresh = "com.google.accompanist:accompanist-swiperefresh:$version"
     }
 }

@@ -9,6 +9,15 @@ android {
         compileSdk = Config.compileSdk
         targetSdk = Config.targetSdk
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = Config.composeVersion
+    }
+
 }
 
 repositories {
@@ -21,4 +30,12 @@ dependencies {
     implementation(Dependencies.Common.appcompat)
     implementation(Dependencies.Common.material)
     implementation(Dependencies.Common.splash)
+
+    //Compose
+    implementation(Dependencies.Compose.ui)
+    implementation(Dependencies.Compose.tooling)
+    implementation(Dependencies.Compose.foundation)
+    implementation(Dependencies.Compose.material)
+    implementation(Dependencies.Compose.iconsCore)
+    implementation(Dependencies.Compose.iconsExtended)
 }

@@ -1,6 +1,5 @@
 package ru.kozirfm.news.di
 
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.lifecycle.ViewModel
 import dagger.Binds
 import dagger.Module
@@ -18,7 +17,6 @@ import ru.kozirfm.news.ui.NewsViewModel
 import ru.kozirfm.news.usecase.NewsUseCase
 import ru.kozirfm.news.usecase.NewsUseCaseImpl
 
-@ExperimentalMaterialApi
 @Module(includes = [ViewModelModule::class])
 interface NewsModule {
 

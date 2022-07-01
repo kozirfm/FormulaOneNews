@@ -1,12 +1,20 @@
 package ru.kozirfm.news.ui
 
 import androidx.compose.animation.core.*
-import androidx.compose.foundation.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.compose.material.Card
+import androidx.compose.material.Divider
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -17,80 +25,66 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import kotlinx.coroutines.launch
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import ru.kozirfm.core.presentation.uistate.UiError
 import ru.kozirfm.core.presentation.uistate.UiLoading
 import ru.kozirfm.core.presentation.uistate.UiSuccess
 import ru.kozirfm.image_loader_api.ImageLoader
-import ru.kozirfm.news.R
 import ru.kozirfm.news_api.entity.InNews
 import ru.kozirfm.utils.extensions.emptyString
+import ru.kozirfm.design_system.R as RDesign
 
 @Composable
 @Suppress("UNCHECKED_CAST")
 fun NewsScreen(viewModel: NewsViewModel, imageLoader: ImageLoader?) {
     val uiState by remember { viewModel.getData() }.collectAsState()
+    val isRefreshing by viewModel.isRefreshing.collectAsState()
     when (uiState) {
         is UiLoading -> NewsShimmer()
         is UiSuccess<*> -> {
             NewsList(
-                news = (uiState as UiSuccess<*>).data as List<InNews>,
-                imageLoader = imageLoader
-            ) {
-                viewModel.onItemClick(it.id)
-            }
+                news = (uiState as UiSuccess<*>).data as? List<InNews>,
+                imageLoader = imageLoader,
+                isRefreshing = isRefreshing,
+                onRefresh = {
+                    viewModel.getData(forceUpdate = true)
+                },
+                onClick = {
+                    viewModel.onItemClick(it.id)
+                }
+            )
         }
         is UiError -> ErrorScreen((uiState as UiError).message)
     }
 }
 
 @Composable
-fun NewsList(news: List<InNews>, imageLoader: ImageLoader?, onClick: (InNews) -> Unit) {
-    LazyColumn {
-        items(news) {
-            Item(inNews = it, imageLoader = imageLoader) {
-                onClick(it)
-            }
-        }
-    }
-}
-
-@Composable
-@ExperimentalMaterialApi
-fun NewsModalBottomSheet(news: List<InNews>, imageLoader: ImageLoader?) {
-    val bottomSheetState = rememberModalBottomSheetState(
-        initialValue = ModalBottomSheetValue.Hidden
-    )
-    val scope = rememberCoroutineScope()
-    val article = remember { mutableStateOf(emptyString()) }
-    ModalBottomSheetLayout(
-        sheetState = bottomSheetState,
-        sheetContent = {
-            Text(
-                modifier = Modifier
-                    .padding(8.dp, 0.dp)
-                    .verticalScroll(
-                        rememberScrollState()
-                    ),
-                fontSize = 16.sp,
-                text = article.value
-            )
-        }) {
-        LazyColumn {
-            items(news) {
-                Item(inNews = it, imageLoader = imageLoader) {
-                    scope.launch {
-                        article.value = it.text
-                        bottomSheetState.show()
+fun NewsList(
+    news: List<InNews>?,
+    imageLoader: ImageLoader?,
+    isRefreshing: Boolean,
+    onClick: (InNews) -> Unit,
+    onRefresh: () -> Unit
+) {
+    news?.let {
+        SwipeRefresh(
+            state = rememberSwipeRefreshState(isRefreshing = isRefreshing),
+            onRefresh = onRefresh
+        ) {
+            LazyColumn {
+                items(news) {
+                    NewsItem(inNews = it, imageLoader = imageLoader) {
+                        onClick(it)
                     }
                 }
             }
         }
-    }
+    } ?: ErrorScreen(message = "Error")
 }
 
 @Composable
-fun Item(inNews: InNews, imageLoader: ImageLoader?, onItemClick: () -> Unit) {
+fun NewsItem(inNews: InNews, imageLoader: ImageLoader?, onItemClick: () -> Unit) {
     Card(
         modifier = Modifier
             .padding(16.dp, 8.dp)
@@ -128,6 +122,23 @@ fun Item(inNews: InNews, imageLoader: ImageLoader?, onItemClick: () -> Unit) {
                 modifier = Modifier.padding(8.dp, 0.dp, 8.dp, 8.dp),
                 text = inNews.date
             )
+        }
+    }
+}
+
+@Composable
+fun ErrorScreen(message: String) {
+    Box(
+        modifier = Modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center,
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Icon(
+                modifier = Modifier.size(100.dp),
+                painter = painterResource(RDesign.drawable.ic_error),
+                contentDescription = emptyString()
+            )
+            Text(fontSize = 24.sp, text = message)
         }
     }
 }
@@ -196,21 +207,4 @@ fun ShimmerAnimation() {
         end = Offset(translateAnim, translateAnim)
     )
     ShimmerItem(brush = brush)
-}
-
-@Composable
-fun ErrorScreen(message: String) {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
-    ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Icon(
-                modifier = Modifier.size(100.dp),
-                painter = painterResource(R.drawable.ic_error),
-                contentDescription = emptyString()
-            )
-            Text(fontSize = 24.sp, text = message)
-        }
-    }
 }

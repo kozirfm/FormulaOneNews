@@ -1,22 +1,37 @@
 package ru.kozirfm.calendar.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
-import androidx.compose.material.Text
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.res.stringResource
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import ru.kozirfm.calendar.di.CalendarFeature
 import ru.kozirfm.core.base.BaseFragment
-import ru.kozirfm.calendar.R
+import ru.kozirfm.image_loader_api.ImageLoader
+import javax.inject.Inject
 
-class CalendarFragment : BaseFragment(R.layout.fragment_calendar) {
+class CalendarFragment : BaseFragment(useComposeView = true) {
+
+    private val viewModel by viewModels<CalendarViewModel> { viewModelFactory }
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @set:Inject
+    var imageLoader: ImageLoader? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        CalendarFeature.calendarComponent?.inject(this)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (view as ViewGroup).addView(ComposeView(view.context).apply {
+        (view as ComposeView).apply {
             setContent {
-                Text(text = stringResource(id = R.string.calendar))
+                CalendarScreen(viewModel = viewModel, imageLoader = imageLoader)
             }
-        })
+        }
     }
 }

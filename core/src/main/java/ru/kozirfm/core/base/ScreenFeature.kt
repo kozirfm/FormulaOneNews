@@ -1,6 +1,6 @@
 package ru.kozirfm.core.base
 
-interface ScreenFeature {
-    fun getApi(): ScreenCreator
+interface ScreenFeature<T> {
+    fun getApi(): T
     fun getScreenName(): String
 }

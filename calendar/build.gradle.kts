@@ -17,7 +17,6 @@ android {
 
     composeOptions {
         kotlinCompilerExtensionVersion = Config.composeVersion
-        kotlinCompilerVersion = Config.kotlinVersion
     }
 
 }
@@ -29,30 +28,23 @@ repositories {
 
 
 dependencies {
-    //Common
     implementation(Dependencies.Common.core)
     implementation(Dependencies.Common.appcompat)
     implementation(Dependencies.Common.material)
     implementation(Dependencies.Common.fragment)
 
-    //Dagger 2
     implementation(Dependencies.Dagger.core)
     kapt(Dependencies.Dagger.compiler)
 
-    //Coroutines
     implementation(Dependencies.Coroutines.core)
 
-    //Lifecycle
     implementation(Dependencies.Lifecycle.core)
     implementation(Dependencies.Lifecycle.viewModel)
 
-    //Navigation
     implementation(Dependencies.RedMadRobot.extensions)
 
-    //Coil
     implementation(Dependencies.Coil.core)
 
-    //Compose
     implementation(Dependencies.Compose.ui)
     implementation(Dependencies.Compose.tooling)
     implementation(Dependencies.Compose.foundation)
@@ -60,9 +52,12 @@ dependencies {
     implementation(Dependencies.Compose.iconsCore)
     implementation(Dependencies.Compose.iconsExtended)
 
-    //Modules
     implementation(project(Modules.core))
     implementation(project(Modules.utils))
     implementation(project(Modules.networkApi))
     implementation(project(Modules.navigationApi))
+    implementation(project(Modules.imageLoaderApi))
+    implementation(project(Modules.designSystem))
+
+    implementation(project(Features.calendarApi))
 }

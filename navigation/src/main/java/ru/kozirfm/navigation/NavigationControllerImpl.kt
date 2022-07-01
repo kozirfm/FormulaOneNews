@@ -18,14 +18,14 @@ import ru.kozirfm.navigation_api.NavigationEvent
 import ru.kozirfm.news.di.NewsFeature.Companion.NEWS_SCREEN
 import ru.kozirfm.utils.extensions.toLowerCase
 import javax.inject.Inject
+import ru.kozirfm.core.R as RCore
 
-class NavigationControllerImpl
-@Inject constructor(
-    private val screens: Set<@JvmSuppressWildcards ScreenFeature>
+class NavigationControllerImpl @Inject constructor(
+    private val screens: Set<@JvmSuppressWildcards ScreenFeature<*>>
 ) : NavigationController {
 
     init {
-        initBaseScreen()
+        initBaseScreens()
     }
 
     private var rootNavController: NavController? = null
@@ -63,17 +63,13 @@ class NavigationControllerImpl
             is NavigationEvent.ToUri -> {
                 screens.singleOrNull { it.getScreenName() == event.screen }?.getApi()
                 val deeplinkArguments = event.arguments?.joinToString(prefix = "/", separator = "/")
-                val uri =
-                    Uri.parse("$DEEPLINK_PREFIX${event.screen.toLowerCase()}$deeplinkArguments")
-                getNavController(
-                    fragment,
-                    event.isRoot
-                )?.navigate(uri)
+                val uri = Uri.parse("$DEEPLINK_PREFIX${event.screen.toLowerCase()}$deeplinkArguments")
+                getNavController(fragment, event.isRoot)?.navigate(uri)
             }
         }
     }
 
-    private fun initBaseScreen() {
+    private fun initBaseScreens() {
         val baseScreen = listOf(
             NEWS_SCREEN,
             LOGIN_SCREEN,
@@ -83,19 +79,19 @@ class NavigationControllerImpl
         screens.filter { baseScreen.contains(it.getScreenName()) }.forEach { it.getApi() }
     }
 
+    private fun getNavController(fragment: Fragment, isRoot: Boolean): NavController? {
+        return if (isRoot) rootNavController else fragment.findNavController()
+    }
+
     private fun Fragment.findNavigationController(): NavController {
         val navHostFragment = this
             .childFragmentManager
-            .findFragmentById(R.id.main_fragment_container) as NavHostFragment
+            .findFragmentById(RCore.id.main_fragment_container) as NavHostFragment
         return navHostFragment.navController.apply {
             graph = navInflater.inflate(R.navigation.root_nav_graph).apply {
                 setStartDestination(R.id.menu_news_nav_graph)
             }
         }
-    }
-
-    private fun getNavController(fragment: Fragment, isRoot: Boolean): NavController? {
-        return if (isRoot) rootNavController else fragment.findNavController()
     }
 
     private companion object {

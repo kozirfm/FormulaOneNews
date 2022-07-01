@@ -3,6 +3,7 @@ object Features {
     val login = module("login")
     val news = module("news")
     val calendar = module("calendar")
+    val calendarApi = module("calendar-api")
     val championship = module("championship")
     val newsDetail = module("news-detail")
     val newsApi = module("news-api")

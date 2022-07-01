@@ -9,6 +9,7 @@ import ru.kozirfm.core.presentation.uistate.UiError
 import ru.kozirfm.core.presentation.uistate.UiLoading
 import ru.kozirfm.core.presentation.uistate.UiState
 import ru.kozirfm.core.presentation.uistate.UiSuccess
+import ru.kozirfm.core.screens.Screen
 import ru.kozirfm.network_api.utils.ResponseError
 import ru.kozirfm.network_api.utils.ResponseSuccess
 import ru.kozirfm.news_detail.usecase.NewsDetailUseCase
@@ -33,5 +34,7 @@ class NewsDetailViewModel @Inject constructor(
         }
         return _viewState
     }
+
+    override val screenName: String = Screen.NEWS_DETAIL.name
 
 }

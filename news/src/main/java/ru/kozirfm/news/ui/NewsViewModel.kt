@@ -3,6 +3,7 @@ package ru.kozirfm.news.ui
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.kozirfm.core.base.BaseViewModel
 import ru.kozirfm.core.presentation.uistate.UiError
@@ -20,25 +21,33 @@ class NewsViewModel @Inject constructor(
     private val newsUseCase: NewsUseCase,
 ) : BaseViewModel() {
 
-    private val _viewState = MutableStateFlow<UiState>(UiLoading)
+    override val screenName: String = Screen.NEWS.name
 
-    fun getData(): StateFlow<UiState> {
-        viewModelScope.launch(exceptionHandler) {
-            if (_viewState.value is UiSuccess<*>) return@launch
-            val state =
-                when (val response = newsUseCase.getNews()) {
-                    is ResponseSuccess<*> -> UiSuccess(response.data)
-                    is ResponseError -> UiError(response.message)
-                }
+    private val _viewState = MutableStateFlow<UiState>(UiLoading)
+    private val _isRefreshing = MutableStateFlow(false)
+
+    internal val isRefreshing = _isRefreshing.asStateFlow()
+
+    fun getData(forceUpdate: Boolean = false): StateFlow<UiState> {
+
+        viewModelScope.launch(coroutineContext) {
+            _isRefreshing.tryEmit(forceUpdate)
+            val state = when (val response = newsUseCase.getNews()) {
+                is ResponseSuccess<*> -> UiSuccess(response.data)
+                is ResponseError -> UiError(response.message)
+                else -> UiError("TimeOut Error")
+            }
+            _isRefreshing.tryEmit(false)
             _viewState
                 .withTimeout(MIN_LOADING_TIMEOUT)
-                .emit(state)
+                .tryEmit(state)
         }
         return _viewState
     }
 
     fun onItemClick(id: Long) {
-        navigateTo(screen = Screen.NEWS_DETAIL_SCREEN.name, arguments = listOf(id.toString()))
+        navigateTo(screen = Screen.NEWS_DETAIL.name, arguments = listOf(id.toString()))
     }
+
 
 }

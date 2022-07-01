@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import com.redmadrobot.extensions.lifecycle.observe
 import ru.kozirfm.core.base.BaseFragment
 import ru.kozirfm.core.viewmodel.ViewModelFactory
+import ru.kozirfm.design_system.ui.compose.theme.AppTheme
 import ru.kozirfm.login.di.LoginFeature
 import javax.inject.Inject
 
@@ -26,6 +27,10 @@ class LoginFragment : BaseFragment(useComposeView = true) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.events, this::handleEvent)
-        (view as ComposeView).setContent { LoginScreen(viewModel) }
+        (view as ComposeView).setContent {
+            AppTheme {
+                LoginScreen(viewModel)
+            }
+        }
     }
 }

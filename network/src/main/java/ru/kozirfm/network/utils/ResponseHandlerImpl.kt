@@ -24,7 +24,8 @@ class ResponseHandlerImpl : ResponseHandler {
         body: (String) -> T
     ): ResponseState {
         val json = deferred.await()
-        val response = Json.decodeFromString<ServerResponse>(json)
+        val jsonConfig = Json { ignoreUnknownKeys = true }
+        val response = jsonConfig.decodeFromString<ServerResponse>(json)
         return if (response.state == STATE_OK) {
             ResponseSuccess(body.invoke(response.result))
         } else {

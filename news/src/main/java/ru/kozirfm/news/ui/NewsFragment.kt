@@ -3,20 +3,18 @@ package ru.kozirfm.news.ui
 import android.content.Context
 import android.os.Bundle
 import android.view.View
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.redmadrobot.extensions.lifecycle.observe
 import ru.kozirfm.core.base.BaseFragment
+import ru.kozirfm.design_system.ui.compose.theme.AppTheme
 import ru.kozirfm.image_loader_api.ImageLoader
-import ru.kozirfm.news.R
 import ru.kozirfm.news.di.NewsFeature
 import javax.inject.Inject
 
 @Suppress("UNCHECKED_CAST")
-@ExperimentalMaterialApi
-class NewsFragment : BaseFragment(R.layout.fragment_news) {
+class NewsFragment : BaseFragment(useComposeView = true) {
 
     private val viewModel by viewModels<NewsViewModel> { viewModelFactory }
 
@@ -33,15 +31,15 @@ class NewsFragment : BaseFragment(R.layout.fragment_news) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val composeView = view.findViewById<ComposeView>(R.id.newsComposeView)
         observe(viewModel.events, this::handleEvent)
-        composeView.setContent {
-            NewsScreen(
-                viewModel = viewModel,
-                imageLoader = imageLoader
-            )
+        (view as ComposeView).setContent {
+            AppTheme {
+                NewsScreen(
+                    viewModel = viewModel,
+                    imageLoader = imageLoader
+                )
+            }
         }
     }
-
 }
 
